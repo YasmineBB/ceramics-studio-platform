@@ -1,0 +1,1 @@
+web: gunicorn ceramics_studio.wsgi
