@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+body {
+    font-family: 'DM Serif Display', serif;
+}
+
+.container-fluid {
+    margin: 20px;
+}
+
+.navbar-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+/* Buttons */
+
+.btn {
+    /* background-color: white;
+    color: black;
+    font-size: 15px;
+    border: 2px solid black; */
+    border-radius: 25px;
+
+}
