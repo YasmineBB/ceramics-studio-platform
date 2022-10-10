@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.http import HttpResponseRedirect
 from .models import Post
 
 
@@ -8,5 +9,8 @@ from .models import Post
 class PostView(generic.ListView):
     model = Post
     queryset = Post.objects.order_by('-created_on')
-    temmplate_name = 'index.html'
+    template_name = 'index.html'
     paginate_by = 6
+
+class AboutView(generic.TemplateView):
+    template_name = "about.html"

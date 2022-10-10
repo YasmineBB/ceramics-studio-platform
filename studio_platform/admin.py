@@ -3,6 +3,10 @@ from .models import Post, Comment
 from django_summernote.admin import SummernoteModelAdmin
 
 
+"""
+Class which allows the admin user to create, view and search for posts.
+"""
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
@@ -10,6 +14,11 @@ class PostAdmin(SummernoteModelAdmin):
     list_display = ['caption', 'status', 'created_on', 'user']
     list_filter = ('status', 'created_on')
     summernote_fields = ('description')
+
+
+"""
+Class which allows the admin user to view, search for, filter and approve comments on posts.
+"""
 
 
 @admin.register(Comment)
