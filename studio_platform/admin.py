@@ -13,6 +13,7 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['caption', 'description']
     list_display = ['caption', 'status', 'created_on', 'user']
     list_filter = ('status', 'created_on')
+    prepopulated_fields = {"slug": ("caption",)}
     summernote_fields = ('description')
 
 

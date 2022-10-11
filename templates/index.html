@@ -3,8 +3,49 @@
 {% block content %}
 <!--Hero image-->
 
-<img src="https://images.pexels.com/photos/3094036/pexels-photo-3094036.jpeg?cs=srgb&dl=pexels-cottonbro-3094036.jpg&fm=jpg"
-    class="img-fluid" alt="Image of a ceramics studio.">
+<!-- <img src="https://images.pexels.com/photos/3094036/pexels-photo-3094036.jpeg?cs=srgb&dl=pexels-cottonbro-3094036.jpg&fm=jpg"
+    class="img-fluid" alt="Image of a ceramics studio."> -->
 
+<!--When user logs in, include personalised welcome-->
+<div class="container-fluid">
+    <div class="row">
+        <p> Welcome {{ post.user }}! Today is {% now "SHORT_DATETIME_FORMAT" %}</p>
+    </div>
+    <!-- Blog posts -->
+    <div class="row">
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for post in post_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                {% if "placeholder" in post.image.url %}
+                                <img class="card-img-top"
+                                    src="https://res.cloudinary.com/duuy3s065/image/upload/c_scale,h_330,w_500/v1665419331/sc_logo_g3dvey.png">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ post.image.url }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ post.user }}</p>
+                                </div>
+                            </div>
+                            <a href="#" class="post-link">
+                                <h2 class="card-title">{{ post.caption }}</h2>
+                                <a href="{{ post.slug }}" class="btn btn-primary">Read More &rarr;</a>
+                                <p class="card-text">{{ post.description|slice:":100" }}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 {%endblock%}
