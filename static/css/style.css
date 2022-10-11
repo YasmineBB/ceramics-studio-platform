@@ -1,18 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@100;200;300;400;500;600;700;800&display=swap');
 
 body {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Alumni Sans', sans-serif;
 }
+
+/* Container */
 
 .container-fluid {
-    margin: 20px;
+    margin: 20px 0;
 }
 
-.navbar-brand {
-    font-family: 'DM Serif Display', serif;
-    font-size: 30px;
-    padding-left: 10px;
+/* Navigation */
+
+.navbar-nav {
+    padding: 0 10px;
 }
+
+/* .navbar-brand {
+    font-family: 'Alumni Sans', sans-serif;
+    font-size: 40px;
+    /* padding-left: 10px; */
+
+
+.navbar-brand {
+    position: relative;
+    width: 140px;
+    left: 15px;
+    background-size: contain;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+.nav-item {
+    font-size: 20px;
+    font-weight: 300;
+}
+
+/* .active {
+    font-weight: bold;
+} */
 
 /* Buttons */
 
@@ -22,5 +52,7 @@ body {
     font-size: 15px;
     border: 2px solid black; */
     border-radius: 25px;
+    font-size: 17.5px;
+    font-weight: 300;
 
 }

@@ -12,5 +12,6 @@ class PostView(generic.ListView):
     template_name = 'index.html'
     paginate_by = 6
 
+
 class AboutView(generic.TemplateView):
     template_name = "about.html"

@@ -15,14 +15,16 @@
 </head>
 
 <body>
-
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-light ">
+    <div class="d-flex flex-row-reverse">
+        <div class="p-2"><a class="btn btn-outline-dark" href="#">Register</a></div>
+        <div class="p-2"><a class="btn btn-outline-dark" href="#">Log In</a></div>
+    </div>
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-            <!-- <a class="navbar-brand" href="#"><img
-                    src="/media/images/SC-logo.png" alt=""></a> -->
-
-            <a class="navbar-brand" href="#">Social Ceramics</a>
+            <a class='navbar-brand' href="{% url 'home' %}"><img class="img-thumbnail"
+                    src="https://res.cloudinary.com/duuy3s065/image/upload/v1665419331/sc_logo_g3dvey.jpg" alt=""></a>
+            <!-- <a class="navbar-brand" href="{% url 'home' %}">Social Ceramics</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -47,17 +49,24 @@
                     </li> -->
                 </ul>
             </div>
-            <div class="d-flex flex-row-reverse">
+            <!-- <div class="d-flex flex-row-reverse">
                 <div class="p-2"><a class="btn btn-outline-dark" href="#">Register</a></div>
                 <div class="p-2"><a class="btn btn-outline-dark" href="#">Log In</a></div>
-            </div>
+            </div> -->
         </div>
     </nav>
 
-    <!--Hero image-->
+    <main class="flex-shrink-0 main-bg">
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+    </main>
 
-    <img src="https://images.pexels.com/photos/3094036/pexels-photo-3094036.jpeg?cs=srgb&dl=pexels-cottonbro-3094036.jpg&fm=jpg"
-        class="img-fluid" alt="...">
+    <!-- <footer class="footer mt-auto py-3 dark-bg">
+        <p class="m-0 text-center text-dark">
+            <i class="fa-brands fa-instagram ms-5"></i>
+            <i class="fa-brands fa-youtube ms-5"></i></p>
+    </footer> -->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
