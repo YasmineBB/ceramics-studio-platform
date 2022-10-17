@@ -3,12 +3,18 @@
 
 body {
     font-family: 'Alumni Sans', sans-serif;
+    margin: 40px;
+}
+
+p {
+    font-weight: 200;
+    font-size: 20px;
 }
 
 /* Container */
 
 .container-fluid {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 /* Navigation */
@@ -63,6 +69,26 @@ body {
     color: rgb(33, 33, 37);
 }
 
-.card-text {
-    text-decoration: none;
+.card-body,
+.card {
+    margin: 10px;
+}
+
+/* About */
+
+.col-md-5 img {
+    width: 50%;
+}
+
+.about {
+    margin-top: 50px;
+}
+
+
+@media (max-width: 768px) {
+
+    .teacher-name {
+        margin-top: 20px;
+    }
+
 }
