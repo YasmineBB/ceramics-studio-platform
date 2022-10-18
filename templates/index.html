@@ -8,16 +8,13 @@
 
 <!--When user logs in, include personalised welcome-->
 <div class="container-fluid">
-    <div class="row">
-        <p> Welcome {{ post.user }}! Today is {% now "SHORT_DATETIME_FORMAT" %}</p>
-    </div>
     <!-- Blog posts -->
     <div class="row">
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
+                <div class="col-md-3">
+                    <div class="card mb-3">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.image.url %}
@@ -30,10 +27,10 @@
                                     <p class="author">Author: {{ post.user }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <a href="{{ post.slug }}" class="post-link">
                                 <h2 class="card-title">{{ post.caption }}</h2>
-                                <a href="{{ post.slug }}" class="btn btn-primary">Read More &rarr;</a>
-                                <p class="card-text">{{ post.description|slice:":100" }}</p>
+                                <a href="{{ post.slug }}" class="btn btn-outline-dark btn-sm">Read More &rarr;</a>
+                                <p class="card-text">{{ post.description|slice:":50" }}</p>
                             </a>
                         </div>
                     </div>

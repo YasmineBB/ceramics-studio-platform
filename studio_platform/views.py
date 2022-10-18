@@ -20,3 +20,7 @@ class PostDetail(generic.DetailView):
 
 class AboutView(generic.TemplateView):
     template_name = "about.html"
+    
+    
+# class LoginView(generic.TemplateView):
+#     template_name = "registration/login.html"
