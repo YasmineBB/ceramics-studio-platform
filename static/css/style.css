@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Alumni Sans', sans-serif;
-    margin: 40px;
+    margin: 0 40px;
 }
 
 p {
@@ -51,13 +51,22 @@ p {
     font-weight: bold;
 } */
 
+.fa-user {
+    padding-left: 10px;
+    color: green;
+}
+
 /* Buttons */
 
 .btn {
-    border-radius: 25px;
+    border-radius: 10px;
     font-size: 17.5px;
     font-weight: 300;
 
+}
+
+.post-btn {
+    margin: 10px 0;
 }
 
 /* Posts */
@@ -73,6 +82,14 @@ p {
 .card-body,
 .card {
     margin: 10px;
+}
+
+.card-text {
+    margin-top: 10px;
+}
+
+.image-flash {
+    padding-top: 10px;
 }
 
 /* About */

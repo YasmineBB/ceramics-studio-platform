@@ -53,3 +53,7 @@ class Comment(models.Model):
         return f'Comment {self.comment_body} by {self.user}'
 
 
+# class StudentUpload(models.Model):
+#     caption = models.CharField(max_length=50)
+#     description = models.TextField(max_length=500)
+#     posted_on = models.DateTimeField(auto_now_add=True)

@@ -16,11 +16,31 @@
 
 <body>
     <!-- Navigation -->
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="d-flex flex-row-reverse">
-            <div class="p-2"><a class="btn btn-outline-dark btn-sm" href="#">Register</a></div>
-            <div class="p-2"><a class="btn btn-outline-dark btn-sm" href="#">Log In</a></div>
+            <div class="p-2"><a class="btn btn-outline-dark btn-sm" href="{% url 'account_signup' %}">Register</a></div>
+            <div class="p-2"><a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}">Log In</a></div>
         </div>
+        <hr>
+    </div> -->
+    <div class="container-fluid">
+        <!-- <div class="d-flex flex-row-reverse">
+            {% if user.is_authenticated %}
+            <div class="p-2">
+                <p>
+                    Hi {{ user.username }}! <i class="fa-regular fa-user"></i>
+                </p>
+
+            </div>
+            <div><a class="p-2 btn btn-outline-danger btn-sm" href="{% url 'account_logout' %}">Log Out</a></div>
+            {% else %}
+            <div class="p-2">
+                <p>You are not logged in!</p>
+                <a class="btn btn-outline-success btn-sm" href="{% url 'account_signup' %}">Register</a>
+                <a class="btn btn-outline-success btn-sm" href="{% url 'account_login' %}">Log In</a>
+            </div>
+            {% endif %}
+        </div> -->
         <hr>
     </div>
     <nav class="navbar navbar-expand-lg ">
@@ -51,6 +71,25 @@
                         <a class="nav-link" href="#">Register</a>
                     </li> -->
                 </ul>
+            </div>
+            <div class="d-flex flex-row-reverse">
+                {% if user.is_authenticated %}
+                <div class="p-2">
+                    <p>
+                        Hi {{ user.username }}! <i class="fa-regular fa-user"></i>
+
+                        <span><a class="p-2 btn btn-outline-danger btn-sm" href="{% url 'account_logout' %}">Log
+                                Out</a></span>
+                    </p>
+                </div>
+                <!-- <div><a class="p-2 btn btn-outline-danger btn-sm" href="{% url 'account_logout' %}">Log Out</a></div> -->
+                {% else %}
+                <div class="p-2">
+                    <p>You are not logged in!</p>
+                    <a class="btn btn-outline-success btn-sm" href="{% url 'account_signup' %}">Sign Up</a>
+                    <a class="btn btn-outline-success btn-sm" href="{% url 'account_login' %}">Log In</a>
+                </div>
+                {% endif %}
             </div>
             <!-- <div class="d-flex flex-row-reverse">
                 <div class="p-2"><a class="btn btn-outline-dark" href="#">Register</a></div>
