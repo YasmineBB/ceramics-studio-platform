@@ -77,13 +77,13 @@
                                 <h2 class="card-title">{{ post.caption }}</h2>
                                 <a href="{{ post.slug }}" class="post-btn btn btn-outline-dark btn-sm">Read More
                                     &rarr;</a>
-                                <p class="card-text">{{ post.description|slice:":50" }}</p>
+                                <p class="card-text">{{ post.description | safe| slice:":100" }}</p>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:2 %}
             </div>
             <div class="row">
                 {% endif %}
