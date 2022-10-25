@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.http import HttpResponseRedirect
 from .models import Post
@@ -34,11 +34,13 @@ class AboutView(generic.TemplateView):
 #     template_name = "post.html"
 #     success_url = reverse_lazy("home")
 
-# def new(request):
-#     if request.method == 'POST':
-#         form = PostForm(request.POST)
-#         form.save()
-#         return redirect('/')
-#     else:
-#         form = PostForm()
-#     return render(request, 'post.html', {'form': form})
+def new_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        post = form.save(commit=False)
+        post.user = request.user
+        post.save()
+        return redirect('/')
+    else:
+        form = PostForm()
+    return render(request, 'post.html', {'form': form})
