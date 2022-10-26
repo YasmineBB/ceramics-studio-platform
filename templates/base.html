@@ -41,7 +41,7 @@
             </div>
             {% endif %}
         </div> -->
-        <hr>
+        <!-- <hr> -->
     </div>
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
@@ -64,33 +64,33 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Classes</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="btn btn-primary" href="#">Log In</a>
-                    </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
-                    </li> -->
+                        <a class="nav-link" href="{% url 'student_gallery' %}">Student Creations</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="d-flex flex-row-reverse">
                 {% if user.is_authenticated %}
-                <div class="p-2">
+                <div style="display: grid;" class="p-2">
                     <p>
-                        Hi {{ user.username }}! <i class="fa-regular fa-user"></i>
+                        <small>Hi {{ user.username }}!</small><i class="fa-regular fa-user me-3"></i>
 
-                        <span><a class="p-2 btn btn-outline-danger btn-sm" href="{% url 'account_logout' %}">Log
+                        <span><a class="btn btn-primary px-3 me-3" href="{% url 'account_logout' %}">Log
                                 Out</a></span>
                     </p>
-                    <button class="btn"><a class="" href="{% url 'new_post' %}">Share
-                            Your Work <i class="fa-solid fa-plus"></i></button></a>
+                    <!-- <button class="btn btn-outline-success me-3"><a class="" href="{% url 'new_post' %}">Share
+                            Your Work <i class="fa-solid fa-plus"></i></a></button> -->
+                    <!-- <a class="btn btn-outline-dark me-3" href="{% url 'student_gallery' %}" type="button">Gallery</a> -->
                 </div>
                 <!-- <div><a class="p-2 btn btn-outline-danger btn-sm" href="{% url 'account_logout' %}">Log Out</a></div> -->
                 {% else %}
-                <div class="p-2">
-                    <p>You are not logged in!</p>
-                    <a class="btn btn-outline-success btn-sm" href="{% url 'account_signup' %}">Sign Up</a>
-                    <a class="btn btn-outline-success btn-sm" href="{% url 'account_login' %}">Log In</a>
+                <div class="d-flex align-items-center">
+                    <a class="btn btn-primary px-3 me-2" href="{% url 'account_signup' %}">Sign Up</a>
+                    <a class="btn btn-primary px-3 me-3" href="{% url 'account_login' %}">Log In</a>
                 </div>
+                <p style="margin: auto 10px;"><small>You are not currently logged in!</small></p>
                 {% endif %}
             </div>
             <!-- <div class="d-flex flex-row-reverse">

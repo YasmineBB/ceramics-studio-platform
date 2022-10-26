@@ -32,34 +32,48 @@
     </div>
     <hr>
 </div> -->
-<!-- <div class="col-md-6">
-    <div class="card mb-3">
-        <form action="upload" method="POST" enctype="">
-            {% csrf_token %}
-            <h3>Share your</h3>
-            <div class="card-body">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                    <input type="file" name='image-upload' class="form-control" id="inputGroupFile01">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="text" placeholder='type here' aria-label="Caption" class="form-control">
-                </div>
-                <button class="btn btn-outline-dark btn-sm" type="submit">Upload</button>
-            </div>
-        </form>
-    </div>
-</div> -->
 
+<div class="container-fluid d-none d-sm-block">
+    <!-- Jumbotron -->
+    <div class="p-5 text-center bg-image rounded-3" style="
+    background-image: url('https://images.pexels.com/photos/4241339/pexels-photo-4241339.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+    height: 400px;
+  ">
+        <div class="mask rounded-3" style="background-color: rgba(67, 65, 65, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white p-5">
+
+                    <h1 class="display-4">Building ceramics whilst building a community</h1>
+                    {% if user.is_authenticated %}
+                    <p class="lead">Take a look at the latest studio posts below, see other students work in the
+                        <em>Students Creations</em> page and share your own
+                        creations, <em>{{ user.username }}</em>!</p>
+                    <a class="btn btn-success me-3" href="{% url 'new_post' %}" role="button">Share
+                        Your Work <i class="fa-solid fa-plus"></i></a>
+                    {% else %}
+                    <p class="lead">Take a look at the latest studio posts below and don't forget to sign in to share
+                        your work!</p>
+                    <a class="btn btn-outline-light btn-lg" href="{% url 'account_login' %}" role="button">Sign in</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jumbotron -->
+</div>
 
 <!--When user logs in, include personalised welcome-->
 <div class="container-fluid">
+    <div class="page-heading">
+        <h2 class="pt-2 d-flex">Latest Posts</h2>
+        <hr>
+    </div>
     <!-- Blog posts -->
     <div class="row">
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="image-container">
@@ -83,7 +97,7 @@
                     </div>
                 </div>
 
-                {% if forloop.counter|divisibleby:2 %}
+                {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
                 {% endif %}
