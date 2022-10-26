@@ -7,24 +7,35 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<section class="text-center" style="margin: 0 20px;">
 
-  <h1>{% trans "Sign In" %}</h1>
+  <div class="p-5 bg-image"></div>
 
-  <p>{% blocktrans %}If you have not created an account with us yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+  <div id="auth-card" class="card mx-4 mx-md-5 shadow-5-strong">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+
+          <h1 class="mb-5">{% trans "Sign In" %}</h1>
+
+          <p>{% blocktrans %}If you have not created an account with us yet, then please
+            <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
 
 
-  <form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
-    <button class="p-2 btn btn-outline-success btn-sm" type="submit">{% trans "Sign In" %}</button>
-  </form>
-
-</div>
+          <form class="login" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+        </div>
+        <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
+        <button class="p-2 btn btn-outline-success btn-sm" type="submit">{% trans "Sign In" %}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock %}
