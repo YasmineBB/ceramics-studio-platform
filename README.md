@@ -28,7 +28,7 @@ I then
 
 The overall design is fairly minimalist, which I felt created a good base for the content to be viewed clearly and without too many distractions. I created a logo in Canva which is visible on all pages to maintain consistent branding.
 
-![Social-Ceramics-Logo](./media/images/screenshots/sc_logo.jpg)
+![Social-Ceramics-Logo](./media/images/sc_logo.jpg)
 
 ## Features
 
@@ -69,6 +69,7 @@ On a desktop the page looks like this.
 On devices smaller than 992px the page looks like this.
 
 ![About-mobile](media/images/screenshots/meet-the-team-mobile.png)
+
 I created a media query for smaller devices to maximise accessibility and make sure the content was clearly visible as it looked cramped otherwise.
 
 ### Features For Future Implementation
@@ -78,6 +79,8 @@ I created a media query for smaller devices to maximise accessibility and make s
 I would like to create a more in-depth profile page for each registered user.
 
 ## Issues and Bugs
+
+- Images and font not rendering on deployed site.
 
 ## Technologies Used
 
