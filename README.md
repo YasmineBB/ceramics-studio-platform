@@ -20,9 +20,14 @@ The initial idea was to build a sharing platform, hence the name Social Ceramics
 
 ## Development
 
+I started planning the site using Notion, where I wrote down my ideas, user stories and direction for the site which I would then edit down based on viability.
+
+I then 
+
 ## Design
 
-The overall design is fairly minimalist, which I felt created a good base for the content to be viewed clearly and without too many distractions. I created a logo in Canva.
+The overall design is fairly minimalist, which I felt created a good base for the content to be viewed clearly and without too many distractions. I created a logo in Canva which is visible on all pages to maintain consistent branding.
+
 ![Social-Ceramics-Logo](./media/images/screenshots/sc_logo.jpg)
 
 ## Features
@@ -33,7 +38,15 @@ The overall design is fairly minimalist, which I felt created a good base for th
 
 ##### Navigation
 
-The navigation bar is visible on all pages on the site, allowing clear routing for the user to access all of the site pages and features. The sign-posting is clear.
+The navigation bar is visible on all pages on the site, allowing clear routing for the user to access all of the site pages and features. The sign-posting is clear and the user can see whether they are signed in or not. If they are not, they will see the *Sign Up* and *Log In* buttons which will direct them to the dedicated pages.
+
+![Nav-logged-out](media/images/screenshots/nav-logged-out.png)
+
+Once they have logged in, they will see a personalised message showing they are logged in, with a *Log Out* button. In this case *Hi admin*, and of course the name will change according to the logged-in user.
+
+![Nav-logged-in](media/images/screenshots/nav-logged-in.png)
+
+The navigation changes in the instance that they are logged in as the *Student Creations* page is now visible.
 
 ##### User Authentication
 

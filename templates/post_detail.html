@@ -7,8 +7,19 @@
     <div class="row">
         <h2>{{ post.caption }}</h2>
         <p>Posted by: {{ post.user }}</p>
-        <p>{{ post.description }}</p>
+        <p>{{ post.description | safe }}</p>
+    </div>
+
+    <div class="d-none d-md-block col-md-6 masthead-image">
+        <!-- The featured image URL goes in the src attribute -->
+        {% if "placeholder" in post.image.url %}
+        <img class="img-thumbnail"
+            src="https://res.cloudinary.com/duuy3s065/image/upload/c_scale,h_330,w_500/v1665419331/sc_logo_g3dvey.png">
+        {% else %}
+        <img class="text-center img-thumbnail" src=" {{ post.image.url }}">
+        {% endif %}
     </div>
 </div>
+
 
 {%endblock%}

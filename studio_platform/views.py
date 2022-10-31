@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 
 
 # Views
@@ -24,6 +25,10 @@ class AboutView(generic.TemplateView):
     template_name = "about.html"
 
 
+class GalleryView(generic.TemplateView):
+    template_name = "student_gallery.html"
+
+
 # class LoginView(generic.TemplateView):
 #     template_name = "registration/login.html"
 
@@ -34,6 +39,7 @@ class AboutView(generic.TemplateView):
 #     template_name = "post.html"
 #     success_url = reverse_lazy("home")
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)

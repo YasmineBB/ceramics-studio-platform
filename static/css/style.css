@@ -12,6 +12,17 @@ p {
     font-size: 20px;
 }
 
+
+/* small {
+    margin: auto;
+} */
+
+/* Page headings */
+
+.page-heading {
+    margin: 0 10px;
+}
+
 /* Container */
 
 .container-fluid {
@@ -56,14 +67,35 @@ p {
     color: green;
 }
 
+/* Jumbotron */
+
+/* .jumbotron {
+    background-image: url('https://images.unsplash.com/photo-1642355778435-8fa5e805ac0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80') no repeat;
+} */
+
+/* Authorisation pages styling */
+
+#auth-card {
+    margin-top: -100px;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(30px);
+}
+
+.bg-image {
+    background-image: url('https://images.pexels.com/photos/3094041/pexels-photo-3094041.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    height: 300px;
+    background-position: top;
+    border-radius: 10px;
+}
+
 /* Buttons */
 
-.btn {
+/* .btn {
     border-radius: 10px;
     font-size: 17.5px;
     font-weight: 300;
 
-}
+} */
 
 .post-btn {
     margin: 10px 0;

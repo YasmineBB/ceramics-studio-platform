@@ -51,7 +51,8 @@
                     <a class="btn btn-success me-3" href="{% url 'new_post' %}" role="button">Share
                         Your Work <i class="fa-solid fa-plus"></i></a>
                     {% else %}
-                    <p class="lead">Take a look at the latest studio posts below and don't forget to sign in to share
+                    <p class="lead">Take a look at the latest studio posts below and don't forget to register or sign in
+                        to share
                         your work!</p>
                     <a class="btn btn-outline-light btn-lg" href="{% url 'account_login' %}" role="button">Sign in</a>
                     {% endif %}
@@ -65,7 +66,7 @@
 <!--When user logs in, include personalised welcome-->
 <div class="container-fluid">
     <div class="page-heading">
-        <h2 class="pt-2 d-flex">Latest Posts</h2>
+        <p class="mt-4 display-4">Latest Posts</p>
         <hr>
     </div>
     <!-- Blog posts -->

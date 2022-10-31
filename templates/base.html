@@ -75,7 +75,7 @@
                 {% if user.is_authenticated %}
                 <div style="display: grid;" class="p-2">
                     <p>
-                        <small>Hi {{ user.username }}!</small><i class="fa-regular fa-user me-3"></i>
+                        <small>Hi <em>{{ user.username }} </em>!</small><i class="fa-regular fa-user me-3"></i>
 
                         <span><a class="btn btn-primary px-3 me-3" href="{% url 'account_logout' %}">Log
                                 Out</a></span>
