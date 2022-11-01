@@ -82,6 +82,19 @@ I would like to create a more in-depth profile page for each registered user.
 
 - Images and font not rendering on deployed site.
 
+- Issue #1
+  - I had a problem creating one particular blog post from the admin panel which, when published, it through off the layout.
+ ![Bug](media/images/screenshots/bug.png)
+
+  I changed the status of this post to draft, and it went back to normal. I then tested the length of the description, so I edited it down to see if this was causing an issue, but it didn't seem to be. I expected this as I didn't add a max_length to the description field in the post model but wanted to check all options anyway.
+  So I then created a new test blog post, and it worked fine.
+
+- Creating a new blog post with the same title, even if one post was in draft status, threw the following error:
+
+  ![Error-message](media/images/screenshots/ErrorMultipleObjects.png)
+
+  I have the title and slug fields set to unique=False, but when I changed the title and slug and the issue was solved.
+
 ## Technologies Used
 
 ### Languages Used
@@ -113,6 +126,10 @@ I would like to create a more in-depth profile page for each registered user.
 ## Credits
 
 ### Content
+
+Content for the blog posts come from:
+
+- [The Little Pot Company](https://thelittlepotcompany.co.uk/blogs/pottery/how-to-centre-clay-the-one-sided-method-beginners-guide)
 
 ### Media
 
