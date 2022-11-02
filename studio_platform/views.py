@@ -74,6 +74,11 @@ def new_post(request):
     return render(request, 'post.html', {'form': form})
 
 
+def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+
 
 # class ImageCreateView(CreateView):
 #     model = Post

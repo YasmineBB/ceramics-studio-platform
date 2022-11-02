@@ -33,9 +33,9 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('username', 'first_name', 'last_name', 'bio',)
-        
+
 
 class UploadForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('caption', 'image', 'description',)
+        fields = ('caption', 'image', 'description', 'user',)
