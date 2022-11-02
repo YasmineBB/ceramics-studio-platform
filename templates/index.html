@@ -89,10 +89,11 @@
                                 </div>
                             </div>
                             <a href="{{ post.slug }}" class="post-link">
-                                <h2 class="card-title">{{ post.caption }}</h2>
+                                <h2 class="card-title">{{ post.caption | safe }}</h2>
                                 <a href="{{ post.slug }}" class="post-btn btn btn-outline-dark btn-sm">Read More
                                     &rarr;</a>
-                                <p class="card-text">{{ post.description | safe| slice:":100" }}</p>
+                                <p>{{ post.created_on }}</p>
+                                <!-- <p class="card-text">{{ post.description | safe| slice:":100" }}</p> -->
                             </a>
                         </div>
                     </div>

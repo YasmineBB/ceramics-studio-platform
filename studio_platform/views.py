@@ -5,6 +5,8 @@ from .models import Post
 from .forms import PostForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib import messages
 
 
 # Views
@@ -39,14 +41,36 @@ class GalleryView(generic.TemplateView):
 #     template_name = "post.html"
 #     success_url = reverse_lazy("home")
 
-@login_required(login_url='/accounts/login/')
+"""
+User upload new post view
+"""
+
+# @login_required(login_url='/accounts/login/')
 def new_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
+        print(request.FILES)
         post = form.save(commit=False)
         post.user = request.user
+        messages.success(request, 'Upload successful!')
         post.save()
-        return redirect('/')
+        # return redirect('/')
+        return redirect('student_gallery')
     else:
         form = PostForm()
     return render(request, 'post.html', {'form': form})
+
+
+"""
+User edit profile view
+"""
+
+class UserEditView(generic.UpdateView):
+    form_class = UserChangeForm
+    template_name = 'profile.html'
+    success_url = reverse_lazy('home')
+    
+    def get_object(self):
+        return self.request.user
+        # messages.success(request, 'Upload successful!')
+        # return redirect('home')

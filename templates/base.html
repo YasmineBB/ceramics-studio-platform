@@ -68,6 +68,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'student_gallery' %}">Student Creations</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Edit Profile</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -100,6 +103,14 @@
         </div>
 
     </nav>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <!-- <div class="row">
         <p> Welcome {{ post.user }}! Today is {% now "SHORT_DATETIME_FORMAT" %}</p>
     </div> -->

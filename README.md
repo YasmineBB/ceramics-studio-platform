@@ -133,6 +133,6 @@ Content for the blog posts come from:
 
 ### Media
 
-- The Social Cermics logo was created in [Canva](https://www.canva.com/).
+- The Social Ceramics logo was created in [Canva](https://www.canva.com/).
   
 - All other images used across the site were taken from [Unsplash](https://unsplash.com/), and [Pexels](https://www.pexels.com/).
