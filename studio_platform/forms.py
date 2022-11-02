@@ -1,6 +1,5 @@
 from django import forms
-
-from .models import Post
+from .models import Post, UserProfile
 from allauth.account.forms import SignupForm, LoginForm
 
 
@@ -8,8 +7,9 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('caption', 'description', 'image',)
+        fields = ('caption', 'image',)
         
+
 
 # class CustomSignupForm(SignupForm):
 #     username = forms.CharField(required=True)
@@ -26,3 +26,16 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
+    
+
+class EditProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = UserProfile
+        fields = ('username', 'first_name', 'last_name', 'bio',)
+        
+
+class UploadForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('caption', 'image', 'description',)

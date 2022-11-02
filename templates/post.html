@@ -12,11 +12,13 @@
             <p>Social Ceramics is all about community, and sharing your work and ideas with your fellow potters makes us
                 who we
                 are!</p>
+            {% if user.is_authenticated %}
+            <h4>Posting as: {{ user.get_username }}</h4>
+            {% endif %}
             <div class="card-body py-5 px-md-5">
 
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
-
                         <div class="d-flex justify-content-center">
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}

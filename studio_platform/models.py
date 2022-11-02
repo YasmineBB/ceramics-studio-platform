@@ -8,7 +8,7 @@ POST_STATUS = ((0, 'Draft'), (1, 'Published'))
 # Models
 
 """
-model for uploading a post.
+Model for uploading a post.
 """
 
 
@@ -57,3 +57,14 @@ class Comment(models.Model):
 #     caption = models.CharField(max_length=50)
 #     description = models.TextField(max_length=500)
 #     posted_on = models.DateTimeField(auto_now_add=True)
+
+"""
+User profile model
+"""
+
+class UserProfile(models.Model):
+    username = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    bio = models.TextField(max_length=200)
+    profile_picture = CloudinaryField('image')
