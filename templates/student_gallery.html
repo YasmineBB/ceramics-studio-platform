@@ -9,18 +9,6 @@
         find
         some inspiration along the way <em>{{ user.username }} </em>!</p>
 
-    <!-- <div class="row">
-        <div class="grid">
-            <div class="grid-col grid-col--1"></div>
-            <div class="grid-col grid-col--2"></div>
-            <div class="grid-col grid-col--3"></div>
-            <div class="grid-col grid-col--4"></div>
-            {% for photo in photos %}
-            <div class="grid-item image-container-custom">
-                <img src="{{photo.image.url}}" alt="{{photo.caption}}" /></a></div>
-            {% endfor %}
-        </div>
-    </div> -->
     <div class="lightbox">
         <div class="row">
             <div class="row">
@@ -30,6 +18,7 @@
                     <div>
                         <img class="w-100 shadow-1-strong rounded img-thumbnail" src="{{photo.image.url}}"
                             alt="{{photo.caption}}" /></a></div>
+                    <p>{{photo.caption}}</p>
                     {% endfor %}
                 </div>
 
