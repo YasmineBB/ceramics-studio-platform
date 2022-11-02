@@ -49,11 +49,6 @@ class StudentUploadView(generic.ListView):
 #     template_name = "registration/login.html"
 
 
-# class CreatePostView(generic.CreateView):  
-#     model = Post
-#     form_class = PostForm
-#     template_name = "post.html"
-#     success_url = reverse_lazy("home")
 
 """
 User upload new post view

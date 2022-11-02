@@ -8,29 +8,31 @@
             students!</p>
     </span>
     <hr>
-    <p class="display-6">Here at Social Ceramics we encourage you to share your work with your fellow students! You may
+    <p class="display-6">Here at Social Ceramics we encourage you to share your work with your fellow students! You
+        may
         find
         some inspiration along the way <em>{{ user.username }} </em>!</p>
 
-    <div class="lightbox">
+    <div class="mt-5">
+
         <div class="row">
-            <div class="col-lg-6">
-                {% for photo in photos %}
-                <div class="image-container">
-                    <p><i class="fa-regular fa-user me-3"></i><strong>Posted By: </strong>{{photo.user}}</p>
-                    <div class='col-lg-4 mb-4 mb-lg-0'>
-                        <img class="w-100 shadow-1-strong rounded img-thumbnail" src="{{photo.image.url}}"
-                            alt="{{photo.caption}}" /></a>
+            {% for photo in photos %}
+            <div class="col-md-4">
+                <div>
+                    <p><i class="fa-regular fa-user me-3"></i>{{photo.user}}</p>
+                    <p><small><em>{{photo.caption}}</em></small></p>
+                    <div class='mb-5'>
+                        <img class="w-100 shadow-1-strong rounded mb-4 img-thumbnail" src="{{photo.image.url}}"
+                            alt="{{photo.caption}}"></a>
                     </div>
-                    <p><em>{{photo.caption}}</em></p>
                 </div>
             </div>
 
+            {% if forloop.counter|divisibleby:3 %}
+            {% endif %}
+            {% endfor %}
         </div>
-
-        {% endfor %}
     </div>
-
 
 </div>
 {% endblock %}
