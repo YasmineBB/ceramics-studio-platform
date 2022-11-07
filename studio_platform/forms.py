@@ -43,4 +43,4 @@ Form for user to edit profile
 class UserForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('username','first_name', 'last_name', 'bio', 'profile_picture',)
+        fields = ('bio', 'profile_picture',)

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid mb-5">
+
+    <div class="row">
+        {% for photo in photos %}
+        <div class="d-md-block col-md-6 masthead-image">
+            <!-- The featured image URL goes in the src attribute -->
+            <img class="text-center img-thumbnail" src=" {{ photo.image }}">
+
+            <h2 class="mt-5">{{ photo.caption }}</h2>
+            <p>Posted by: {{ photo.user }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+
+{%endblock%}

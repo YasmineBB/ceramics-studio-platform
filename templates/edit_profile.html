@@ -16,9 +16,9 @@
                 <hr>
                 <div class="card-text">
                     <p class="text-muted mb-0">Profile Picture:</p>
-                    <p>{{ user_profile.profile_picture }} </p>
+                    <p>{{ user_profile.profile_picture.url }} </p>
                     <p class="text-muted mb-0">Username:</p>
-                    <p>{{ user.username }}</p>
+                    <p>{{ user.get_username }}</p>
                     <!-- <p class="text-muted mb-0">First Name:</p>
                     <p>{{ user_profile.first_name }} {{ user_profile.last_name }}</p>
                     <p class="text-muted mb-0">Last Name:</p>
@@ -31,9 +31,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-9 pb-4">
-            ...
         </div>
     </div>
 </div>

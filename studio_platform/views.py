@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic import (ListView,
                                   DetailView,
@@ -12,6 +12,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib import messages
+
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 # Views
@@ -128,7 +130,7 @@ User view profile view
 
 #     return render(request, 'templates/profile.html', {'profile_form': profile_form})
 
-
+@login_required(login_url='/accounts/login/')
 def user_profile(request):
     items = UserProfile.objects.all()
     context = {
@@ -137,6 +139,42 @@ def user_profile(request):
     return render(request, 'profile.html', context)
 
 
+@login_required(login_url='/accounts/login/')
 def edit_profile(request):
-	user_form = UserForm(instance=request.user)
-	return render(request=request, template_name="edit_profile.html", context={"user":request.user, "user_form":user_form })
+    if request.method == "POST":
+        # profile = UserProfile.objects.get(username=request.user)
+        user_form = UserForm(request.POST, request.FILES, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+        else:
+            messages.error(request, 'Unable to complete request')
+        return redirect("edit_profile")
+    user_form = UserForm(instance=request.user)
+    return render(request=request, template_name="edit_profile.html", context={"user": request.user, "user_form":user_form })
+
+
+@login_required(login_url='/accounts/login/')
+def create_profile(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES)
+        profile = form.save(commit=False)
+        profile.user = request.user
+        messages.success(request, 'Upload successful!')
+        post.save()
+        # return redirect('/')
+        return redirect('student_gallery')
+    else:
+        form = UserForm()()
+    return render(request, 'profile.html', {'form': form})
+
+
+class UpdatePostView(UpdateView):
+    model = Post
+    template_name = 'update_image.html'
+    fields = ['image', 'caption',]
+
+
+class ImageDetail(generic.DetailView):
+    model = Post
+    template_name = 'image_detail.html'
