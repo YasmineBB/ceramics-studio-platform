@@ -8,7 +8,7 @@
 
 I developed the idea for *Social Ceramics* after taking a 12-week pottery class which provided me with so much inspiration not only creatively, but gave me the idea for creating a useful platform for a fictional ceramics studio.
 
-The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post helpful blog posts that would help the students with their progress, as well as the students being able to share their work, ideas and progress.
+The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post interesting and useful blog posts that would help the students with their progress, as well as the students being able to share their work, ideas and progress.
 
 ## User Experience
 
@@ -16,11 +16,24 @@ The initial idea was to build a sharing platform, hence the name Social Ceramics
 
 #### Site User
 
+- As a **Site User** I can:
+  
+  - *Register for an account so that I can share my work and view the work of my fellow students.*
+  - *Log in with my credentials so that I can share my work and view the work of my fellow students.*
+  - *Navigate through the platform easily so that I can interact with my fellow students.*
+
 #### Site Admin
+
+- As a **Site Admin** I can:
+  - *Create, read, update and delete posts so that I can manage the Social Ceramics platform.*
 
 ## Development
 
-I started planning the site using Notion, where I wrote down my ideas, user stories and direction for the site which I would then edit down based on viability.
+I started the initial planning of the site using Notion, where I wrote down my ideas, user stories and direction for the site including features, which I would then edit down based on viability and to keep on track with an MVP. I found it useful I then created issues, including my user stories which I assigned to the dedicated projects board for the project.
+
+I did find it quite challenging at times but also found it helpful in keeping me focused on the tasks and on track with the overall project.
+
+I also used Figmas FigJam during the planning and development stages which I found helpful to my progress as a visual learner.
 
 I then 
 
@@ -28,7 +41,7 @@ I then
 
 The overall design is fairly minimalist, which I felt created a good base for the content to be viewed clearly and without too many distractions. I created a logo in Canva which is visible on all pages to maintain consistent branding.
 
-![Social-Ceramics-Logo](./media/images/sc_logo.jpg)
+![Social-Ceramics-Logo](./static/images/sc_logo.jpg)
 
 ## Features
 
@@ -97,21 +110,32 @@ I would like to create a more in-depth profile page for each registered user.
 
 ## Technologies Used
 
+- Gitpod was the platform used to develop the project.
+- GitHub was used to build and host the repository, build the projects board and track issues.
+- Heroku was used to deploy the site.
+
 ### Languages Used
+
+- HTML was used for the layout of all templates.
+- CSS was used to style the pages and maintaining brand and styling consistent across the site.
 
 ### Frameworks
 
 - Django
   - Django was the main framework, and the backbone of this project, where I created the models, views and forms for the site.
 - Bootstrap
+  - Bootstrap 5 was used to develop a responsive, mobile friendly site using the predefined classes for a clear and consistent layout.
 
 - Cloudinary
 
 ### Libraries
 
 - Summernote
+  - Summernote was the WYSIWYG editor used to create posts in the Django admin panel for teachers to use.
+
 - Google Fonts
 - Font Awesome
+  - Font Awesome was used for the icon that appears when a user is logged in.
 
 ## Testing
 
