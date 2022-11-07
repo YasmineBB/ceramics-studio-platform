@@ -2,7 +2,9 @@ from django import forms
 from .models import Post, UserProfile
 from allauth.account.forms import SignupForm, LoginForm
 
-
+"""
+Form for user to upload their work.
+"""
 class PostForm(forms.ModelForm):
 
     class Meta:
@@ -35,3 +37,10 @@ class UploadForm(forms.ModelForm):
         fields = ('caption', 'image', 'description', 'user',)
 
 
+"""
+Form for user to edit profile
+"""
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('username','first_name', 'last_name', 'bio', 'profile_picture',)

@@ -7,7 +7,7 @@ from django.views.generic import (ListView,
                                   DeleteView)
 from django.http import HttpResponseRedirect
 from .models import Post, UserProfile
-from .forms import PostForm, UploadForm
+from .forms import PostForm, UploadForm, UserForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
@@ -92,13 +92,13 @@ User edit profile view
 # message for user who tries to access the page without being logged in ('please sign in first')
 
 # @login_required(login_url='/accounts/login/')
-class UserEditView(generic.UpdateView):
-    form_class = UserChangeForm
-    template_name = 'edit_profile.html'
-    success_url = reverse_lazy('home')
+# class UserEditView(generic.UpdateView):
+#     form_class = UserChangeForm
+#     template_name = 'edit_profile.html'
+#     success_url = reverse_lazy('home')
 
-    def get_object(self):
-        return self.request.user
+#     def get_object(self):
+#         return self.request.user
         # messages.success(request, 'Upload successful!')
         # return redirect('home')
 
@@ -135,3 +135,8 @@ def user_profile(request):
         'items': items
     }
     return render(request, 'profile.html', context)
+
+
+def edit_profile(request):
+	user_form = UserForm(instance=request.user)
+	return render(request=request, template_name="edit_profile.html", context={"user":request.user, "user_form":user_form })

@@ -2,48 +2,64 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Edit Profile" %}{% endblock %}
 
 {% block content %}
-{% for userprofile in userprofile_list %}
-{{ userprofile.first_name }}
-{% endfor %}
-
-<section class="text-center" style="margin: 0 20px;">
-
-    <div class="p-5 bg-image">
-    </div>
-
-    <div id="auth-card" class="card mx-4 mx-md-5 shadow-5-strong">
-        <div class="card-body py-5 px-md-5">
-
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8">
-                    {% for profile in profiles %}
-                    {{ profile.first_name }}
-                    {% endfor %}
-                    <h1 class="mb-5">{% trans "Edit Profile" %}</h1>
-                    <form method="post" action="{% url 'edit_profile' %}">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-
-                            </div>
-                        </div>
 
 
+<!--User-->
+<br><br>
+<div class="container mx-auto">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-3 pb-4">
+            <div class="card p-4">
+                <h4 class="card-title font-weight-bold text-center">Hello, {{ user.username|title }}</h4>
+                <hr>
+                <div class="card-text">
+                    <p class="text-muted mb-0">Profile Picture:</p>
+                    <p>{{ user_profile.profile_picture }} </p>
+                    <p class="text-muted mb-0">Username:</p>
+                    <p>{{ user.username }}</p>
+                    <!-- <p class="text-muted mb-0">First Name:</p>
+                    <p>{{ user_profile.first_name }} {{ user_profile.last_name }}</p>
+                    <p class="text-muted mb-0">Last Name:</p>
+                    <p>{{ user_profile.last_name }}</p> -->
+                    <p class="text-muted mb-0">Bio:</p>
+                    <p>{{ user_profile.bio }} </p>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#profileModal">Edit Profile</button>
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-9 pb-4">
+            ...
+        </div>
+    </div>
+</div>
 
-                <button type="submit" class="btn btn-primary mb-4">
-                    Update Profile
+<!--Edit user modal-->
+<div class="modal" tabindex="-1" id="profileModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
                 </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-    </div>
-</section>
+</div>
 
 {% endblock %}
