@@ -94,10 +94,44 @@ User edit profile view
 # @login_required(login_url='/accounts/login/')
 class UserEditView(generic.UpdateView):
     form_class = UserChangeForm
-    template_name = 'profile.html'
+    template_name = 'edit_profile.html'
     success_url = reverse_lazy('home')
 
     def get_object(self):
         return self.request.user
         # messages.success(request, 'Upload successful!')
         # return redirect('home')
+
+
+"""
+User view profile view
+"""
+# def userpage(request):
+# 	user_form = UserForm(instance=request.user)
+# 	profile_form = ProfileForm(instance=request.user.profile)
+# 	return render(request=request, template_name="profile.html", context={"user":request.user, "user_form":user_form, "profile_form":profile_form })
+
+
+# def profile(request):
+#     if request.method == 'POST':
+#         user_form = UpdateUserForm(request.POST, instance=request.user)
+#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+#         if profile_form.is_valid():
+#             user_form.save()
+#             profile_form.save()
+#             messages.success(request, 'Your profile is updated successfully')
+#             return redirect(to='profile')
+#     else:
+#         user_form = UpdateUserForm(instance=request.user)
+#         profile_form = UpdateProfileForm(instance=request.user.profile)
+
+#     return render(request, 'templates/profile.html', {'profile_form': profile_form})
+
+
+def user_profile(request):
+    items = UserProfile.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'profile.html', context)

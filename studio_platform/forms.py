@@ -26,16 +26,12 @@ class CustomSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         return user
-    
 
-class EditProfileForm(forms.ModelForm):
-
-    class Meta:
-        model = UserProfile
-        fields = ('username', 'first_name', 'last_name', 'bio',)
 
 
 class UploadForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('caption', 'image', 'description', 'user',)
+
+
