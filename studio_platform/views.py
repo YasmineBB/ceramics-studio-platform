@@ -178,3 +178,4 @@ class UpdatePostView(UpdateView):
 class ImageDetail(generic.DetailView):
     model = Post
     template_name = 'image_detail.html'
+    context_object_name = 'photo'

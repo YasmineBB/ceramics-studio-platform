@@ -20,7 +20,7 @@
             <div class="col-md-4">
                 <div>
                     <p><i class="fa-regular fa-user me-3"></i>{{photo.user}}</p>
-                    <p><small><em>{{photo.caption}}</em></small></p><span> <a href="{{photo.image.url}}"
+                    <p><small><em>{{photo.caption}}</em></small></p><span> <a href="{% url 'image_detail' photo.id %}"
                             class="post-btn btn btn-outline-dark btn-sm">View Post
                             &rarr;</a></span>
                     <div class='mb-5'>
