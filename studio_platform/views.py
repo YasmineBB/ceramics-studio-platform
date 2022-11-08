@@ -53,8 +53,9 @@ class StudentUploadView(generic.ListView):
 
 
 """
-User upload new post view
+View for users to upload an image.
 """
+
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -184,6 +185,7 @@ class UpdateImageView(generic.UpdateView):
         # post.user = request.user
         return reverse_lazy('image_detail', kwargs={'pk': post})
 
+
 """
 View to allow user to view an particular image.
 """
@@ -195,3 +197,12 @@ class ImageDetail(generic.DetailView):
     context_object_name = 'photo'
 
 
+"""
+View to allow user to delete an image they have posted.
+"""
+
+
+class ImageDeleteView(generic.DeleteView):
+    template_name = 'delete_image.html'
+    model = Post
+    success_url = reverse_lazy('student_gallery')
