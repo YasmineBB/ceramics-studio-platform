@@ -10,6 +10,7 @@ urlpatterns = [
     # path('post/', views.ImageCreateView.as_view(), name='create'),
     path('student_gallery/', views.StudentUploadView.as_view(), name='student_gallery'),
     path('photo_detail/<int:pk>', views.ImageDetail.as_view(), name='image_detail'),
+    path('<int:pk>/update_image/', views.UpdateImageView.as_view(), name='update_image'),
     # path('edit_profile/', views.UserEditView.as_view(), name='edit_profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('profile/', views.user_profile, name='profile'),

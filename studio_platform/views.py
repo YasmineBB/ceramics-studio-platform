@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
-from django.views.generic import (ListView,
-                                  DetailView,
-                                  CreateView,
-                                  UpdateView,
-                                  DeleteView)
+# from django.views.generic import (ListView,
+#                                   DetailView,
+#                                   CreateView,
+#                                   UpdateView,
+#                                   DeleteView)
 from django.http import HttpResponseRedirect
 from .models import Post, UserProfile
 from .forms import PostForm, UploadForm, UserForm
@@ -169,13 +169,29 @@ def create_profile(request):
     return render(request, 'profile.html', {'form': form})
 
 
-class UpdatePostView(UpdateView):
+"""
+View to allow user to update make changes to their image post.
+"""
+
+
+class UpdateImageView(generic.UpdateView):
     model = Post
     template_name = 'update_image.html'
     fields = ['image', 'caption',]
+    
+    def get_success_url(self):
+        post = self.kwargs['pk']
+        # post.user = request.user
+        return reverse_lazy('image_detail', kwargs={'pk': post})
+
+"""
+View to allow user to view an particular image.
+"""
 
 
 class ImageDetail(generic.DetailView):
     model = Post
     template_name = 'image_detail.html'
     context_object_name = 'photo'
+
+
