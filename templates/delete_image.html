@@ -5,16 +5,17 @@
 {% block content %}
 <div class="container pb-2 pt-2 border rounded container-custom my-3">
     <div class="form-group mx-auto">
-        <h2 class="text-center">
-            You are going to <span class="text-danger">delete</span>: "<i>{{ post.caption }}</i>
-            "</h2>
-        <p class="text-center">Are you sure, you want to delete the photo ?</p>
+        <h2 class="display-5 text-center mt-3">
+            One sec!</h2>
+        <p class="text-center">Are you sure, you want to <span class="text-danger">delete</span>
+            <em>"{{ post.caption }}"</em>"
+            {{ post.user }}?</p>
         <div class="form-group">
             <form action="" method="post" class="d-flex flex-column align-items-center justify-content-center">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col text-right">
-                        <a href="{% url 'image_detail' post.id %}" class="my-2 btn btn-primary btn-sm">Cancel</a>
+                        <a href="{% url 'image_detail' post.id %}" class="my-2 btn btn-outline-dark btn-sm">Cancel</a>
                     </div>
                     <div class="col text-left">
                         <button type="submit" class="my-2 btn btn-danger btn-sm">Delete</button>
