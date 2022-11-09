@@ -38,7 +38,7 @@
         <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
     </div>
     <div class="col-1">
-        {% with comments.count as total_comments %}
+        {% with comment.count as total_comments %}
         <strong class="text-secondary"><i class="far fa-comments"></i>
             <!-- Our total_comments variable goes before the closing strong tag -->
             {{ total_comments }}</strong>
@@ -58,18 +58,18 @@
         <h3 class="display-6">Comments:</h3>
         <div class="card-body">
             <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-            {% for comment in comments %}
+            {% for comments in comment %}
             <div class="comments" style="padding: 10px;">
                 <p class="font-weight-bold">
                     <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                    {{ comment.name }}
+                    {{ comments.name }}
                     <span class=" text-muted font-weight-normal">
                         <!-- The comment's created date goes here -->
-                        {{ comment.posted_on }}
+                        {{ comments.posted_on }}
                     </span> wrote:
                 </p>
                 <!-- The body of the comment goes before the | -->
-                {{ comment.body | linebreaks }}
+                {{ comments.comment_body | linebreaks }}
             </div>
             <!-- Our for loop ends here -->
             {% endfor %}
@@ -77,11 +77,11 @@
     </div>
     <div class="col-md-4 card mb-4  mt-3 ">
         <div class="card-body">
-            <!-- For later -->
             {% if commented %}
             <div class="alert alert-success" role="alert">
                 Your comment is awaiting approval
             </div>
+
             {% else %}
             {% if user.is_authenticated %}
 
@@ -93,9 +93,9 @@
                 <button type="submit" class="btn btn-success btn-signup btn-sm">Submit</button>
             </form>
 
-            {% else %}
+            <!-- {% else %}
             <p>Please <a href="{% url 'account_login' %}"><em>sign in</em></a> to comment and like!</p>
-            {% endif %}
+            {% endif %} -->
             {% endif %}
         </div>
     </div>

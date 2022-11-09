@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container-fluid mb-5">
+<div class="container-fluid mb-5 mt-5">
     {% if user.is_authenticated %}
     {% if user.id == photo.user.id %}
     <p class="display-4">{{photo.user}}</p><span>
@@ -12,9 +12,9 @@
     {% endif %}
     {% endif %}
     <hr>
-    <div class="row mt-2">
-        <div class="col-sm-8 pr-2">
-            <div class="d-md-block col-md-12 masthead-image">
+    <div class="row mt-4">
+        <div class="col-sm-8">
+            <div class="d-md-block col-md-6">
                 <p><i class="fa-regular fa-user me-3"></i>
                     <strong>{{photo.user}}</strong></p>
                 <img class="img-thumbnail" src=" {{ photo.image.url }}">

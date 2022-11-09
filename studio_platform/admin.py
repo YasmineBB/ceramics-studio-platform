@@ -25,8 +25,8 @@ Class which allows the admin user to view, search for, filter and approve commen
 @admin.register(Comment)
 class CommentAdmin(SummernoteModelAdmin):
 
-    search_fields = ['user', 'comment_body']
-    list_display = ['user', 'comment_body', 'post', 'posted_on', 'approved']
+    search_fields = ['name', 'comment_body']
+    list_display = ['name', 'comment_body', 'post', 'posted_on', 'approved']
     list_filter = ['approved', 'posted_on']
     actions = ['approve_comments']
     
