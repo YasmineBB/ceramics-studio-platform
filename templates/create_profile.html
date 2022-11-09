@@ -10,7 +10,7 @@
         <div id="auth-card" class="card mx-4 mx-md-5 shadow-5-strong">
             <h1 class="mt-5">Create A Profile</h1>
             {% if user.is_authenticated %}
-            <h4>{{ user.get_username }}</h4>
+            <p>Currently logged in as: {{ user.get_username }}</p>
             {% endif %}
             <div class="card-body py-5 px-md-5">
 

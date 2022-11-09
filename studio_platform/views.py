@@ -156,13 +156,26 @@ class ProfileCreateView(generic.CreateView):
     form_class = UserForm
     # fields = ['username', 'first_name', 'last_name', 'bio']
     template_name = 'create_profile.html'
-    success_url = reverse_lazy('profile')
+    success_url = reverse_lazy('create_profile')
     
     def form_valid(self, form):
         form.instance.username = self.request.user
         return super().form_valid(form)
 
 
+"""
+View for user to see their profile.
+"""
+
+
+class ProfileDetail(generic.DetailView):
+    model = UserProfile
+    template_name = 'profile.html'
+    context_object_name = 'profile'
+    
+    def get_queryset(self):
+        user = self.request.user
+        return UserProfile.objects.filter(username=user)
 
 
 """
@@ -207,28 +220,33 @@ User view profile view
 
 #     return render(request, 'templates/profile.html', {'profile_form': profile_form})
 
-@login_required(login_url='/accounts/login/')
-def user_profile(request):
-    items = UserProfile.objects.all()
-    context = {
-        'items': items
-    }
-    return render(request, 'profile.html', context)
 
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
     if request.method == "POST":
         # profile = UserProfile.objects.get(username=request.user)
-        user_form = UserForm(request.POST, request.FILES, instance=request.user)
+        user_form = UserForm(request.POST, request.FILES, instance=request.user.profile)
+        print(request.POST)
         if user_form.is_valid():
             user_form.save()
             messages.success(request, 'Your profile was successfully updated!')
         else:
             messages.error(request, 'Unable to complete request')
+            print('form invalid')
         return redirect("edit_profile")
-    user_form = UserForm(instance=request.user)
+    user_form = UserForm(instance=request.user.profile)
     return render(request=request, template_name="edit_profile.html", context={"user": request.user, "user_form":user_form })
+
+# class edit_profile(generic.UpdateView):
+#     model = UserProfile
+#     template_name = 'edit_profile.html'
+#     fields = ['first_name', 'last_name', 'bio',]
+    
+#     def get_success_url(self):
+#         edit_profile = self.kwargs['pk']
+#         # post.user = request.user
+#         return reverse_lazy('edit_profile', kwargs={'pk': edit_profile})
 
 
 # @login_required(login_url='/accounts/login/')

@@ -68,8 +68,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'student_gallery' %}">Student Creations</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'create_profile' %}">Create Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'edit_profile' %}">View Profile</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'new_post' %}">Share Your Work<small> <i

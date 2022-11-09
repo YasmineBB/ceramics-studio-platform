@@ -36,5 +36,5 @@ class CommentAdmin(SummernoteModelAdmin):
 
 @admin.register(UserProfile)
 class ProfileAdmin(admin.ModelAdmin):
-    search_fields = ['first_name', 'last_name', 'bio', 'profile_picture']
-    list_display = ['first_name', 'last_name', 'bio', 'profile_picture']
+    search_fields = ['first_name', 'last_name', 'bio',]
+    list_display = ['first_name', 'last_name', 'bio',]
