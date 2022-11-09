@@ -154,7 +154,6 @@ User create profile view.
 class ProfileCreateView(generic.CreateView):
     model = UserProfile
     form_class = UserForm
-    # fields = ['username', 'first_name', 'last_name', 'bio']
     template_name = 'create_profile.html'
     success_url = reverse_lazy('create_profile')
     
@@ -168,14 +167,14 @@ View for user to see their profile.
 """
 
 
-class ProfileDetail(generic.DetailView):
-    model = UserProfile
-    template_name = 'profile.html'
-    context_object_name = 'profile'
+# class ProfileDetail(generic.DetailView):
+#     model = UserProfile
+#     template_name = 'profile.html'
+#     context_object_name = 'profile'
     
-    def get_queryset(self):
-        user = self.request.user
-        return UserProfile.objects.filter(username=user)
+#     def get_queryset(self):
+#         user = self.request.user
+#         return UserProfile.objects.filter(username=user)
 
 
 """
