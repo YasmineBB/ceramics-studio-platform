@@ -1,13 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import generic
-# from django.views.generic import (ListView,
-#                                   DetailView,
-#                                   CreateView,
-#                                   UpdateView,
-#                                   DeleteView)
+from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, UserProfile
-from .forms import PostForm, UploadForm, UserForm
+from .forms import PostForm, UploadForm, UserForm, CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
@@ -16,7 +11,10 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-# Views
+"""
+View for user to see blog posts.
+"""
+
 
 class PostView(generic.ListView):
     model = Post
@@ -25,9 +23,67 @@ class PostView(generic.ListView):
     paginate_by = 6
 
 
-class PostDetail(generic.DetailView):
-    model = Post
-    template_name = 'post_detail.html'
+# class PostDetail(generic.DetailView):
+#     model = Post
+#     template_name = 'post_detail.html'
+
+"""
+View for user to comment on blog posts.
+"""
+
+
+class PostDetail(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comment = post.comment.filter(approved=True).order_by("-posted_on")
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        return render(
+            request,
+            "post_detail.html",
+            {
+                "post": post,
+                "comment": comment,
+                "commented": False,
+                "liked": liked,
+                "comment_form": CommentForm()
+            },
+        )
+    
+    def post(self, request, slug, *args, **kwargs):
+
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+        comment = post.comment.filter(approved=True).order_by("-posted_on")
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
+
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "commented": True,
+                "comment_form": comment_form,
+                "liked": liked
+            },
+        )
 
 
 class AboutView(generic.TemplateView):
@@ -90,7 +146,12 @@ def form_valid(self, form):
 
 
 """
-User edit profile view
+User create profile view.
+"""
+
+
+"""
+User edit profile view.
 """
 # message for user who tries to access the page without being logged in ('please sign in first')
 
@@ -166,7 +227,7 @@ def create_profile(request):
         # return redirect('/')
         return redirect('student_gallery')
     else:
-        form = UserForm()()
+        form = UserForm()
     return render(request, 'profile.html', {'form': form})
 
 

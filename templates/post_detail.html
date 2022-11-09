@@ -3,9 +3,10 @@
 
 {% block content %}
 
-<div class="container-fluid mb-5">
+<div class="container-fluid mb-5 mt-4">
     <div class="row">
-        <div class="d-md-block col-md-6 masthead-image">
+        <!-- <h2 class="mt-5 mb-5 display-6">{{ post.caption }}</h2> -->
+        <div class="d-md-block col-md-6 masthead-image mt-4">
             <!-- The featured image URL goes in the src attribute -->
             {% if "placeholder" in post.image.url %}
             <img class="img-thumbnail"
@@ -15,15 +16,90 @@
             {% endif %}
         </div>
     </div>
-    <div class="row">
-        <h2 class="mt-5">{{ post.caption }}</h2>
-        <p>Posted by: {{ post.user }}</p>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <h2 class="mt-4 display-5">{{ post.caption }}</h2>
+            <p>Posted by: {{ post.user }}</p>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <p> {{ post.description | safe }}</p>
         </div>
     </div>
+</div>
+
+
+
+<div class="row">
+
+    <div class="col-1">
+        <!-- The number of likes goes before the closing strong tag -->
+        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
+    </div>
+    <div class="col-1">
+        {% with comments.count as total_comments %}
+        <strong class="text-secondary"><i class="far fa-comments"></i>
+            <!-- Our total_comments variable goes before the closing strong tag -->
+            {{ total_comments }}</strong>
+        {% endwith %}
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col">
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8 card mb-4  mt-3 ">
+        <h3 class="display-6">Comments:</h3>
+        <div class="card-body">
+            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+                <p class="font-weight-bold">
+                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                    {{ comment.name }}
+                    <span class=" text-muted font-weight-normal">
+                        <!-- The comment's created date goes here -->
+                        {{ comment.posted_on }}
+                    </span> wrote:
+                </p>
+                <!-- The body of the comment goes before the | -->
+                {{ comment.body | linebreaks }}
+            </div>
+            <!-- Our for loop ends here -->
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-4 card mb-4  mt-3 ">
+        <div class="card-body">
+            <!-- For later -->
+            {% if commented %}
+            <div class="alert alert-success" role="alert">
+                Your comment is awaiting approval
+            </div>
+            {% else %}
+            {% if user.is_authenticated %}
+
+            <h3>Leave a comment:</h3>
+            <p>Posting as: {{ user.username }}</p>
+            <form method="post" style="margin-top: 1.3em;">
+                {{ comment_form }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-signup btn-sm">Submit</button>
+            </form>
+
+            {% else %}
+            <p>Please <a href="{% url 'account_login' %}"><em>sign in</em></a> to comment and like!</p>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 </div>
 
 

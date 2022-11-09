@@ -85,6 +85,21 @@ On devices smaller than 992px the page looks like this.
 
 I created a media query for smaller devices to maximise accessibility and make sure the content was clearly visible as it looked cramped otherwise.
 
+#### Share Your Work
+
+Once a student has logged in, they have the option to share their work. This page becomes visible in the navigation bar as well as on the homepage jumbotron.
+
+#### Student Creations Page
+
+Once the user has logged in, the *Student Creations* page is visible in the navigation bar.
+
+This page acts as a feed to display all of the student posts. It is paginated to show 30 posts per page with each row having 3 columns, so 3 posts per row. Each post shows its user, a caption and the image.
+
+![student-creations](https://media.giphy.com/media/KKCn6jnUpkZH8vT4Nd/giphy.gif)
+
+The user can click the *view post* button to see the post. If the user is the author of the post, the are provided with the option to make changes to or delete their post. This is not visible to other users so that only the author has access to make any changes.
+
+
 ### Features For Future Implementation
 
 #### Profile
