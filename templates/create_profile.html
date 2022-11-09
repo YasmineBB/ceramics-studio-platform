@@ -8,12 +8,9 @@
         <div class="p-5 bg-image"></div>
 
         <div id="auth-card" class="card mx-4 mx-md-5 shadow-5-strong">
-            <h1 class="mt-5">Share Your work</h1>
-            <p>Social Ceramics is all about community, and sharing your work and ideas with your fellow potters makes us
-                who we
-                are!</p>
+            <h1 class="mt-5">Create A Profile</h1>
             {% if user.is_authenticated %}
-            <h4>Posting as: {{ user.get_username }}</h4>
+            <h4>{{ user.get_username }}</h4>
             {% endif %}
             <div class="card-body py-5 px-md-5">
 
@@ -25,7 +22,7 @@
                                 {{ form.as_p }}
                                 <div class="d-flex justify-content-center">
                                     <!-- <button class="p-2 btn btn-outline-dark btn-sm" type="submit">Share</button> -->
-                                    <button type="submit" class="btn btn-primary btn-rounded">Share</button>
+                                    <button type="submit" class="btn btn-primary btn-rounded">Create</button>
                                 </div>
 
                             </form>

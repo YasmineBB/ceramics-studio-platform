@@ -151,6 +151,20 @@ User create profile view.
 """
 
 
+class ProfileCreateView(generic.CreateView):
+    model = UserProfile
+    form_class = UserForm
+    # fields = ['username', 'first_name', 'last_name', 'bio']
+    template_name = 'create_profile.html'
+    success_url = reverse_lazy('profile')
+    
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+
+
+
+
 """
 User edit profile view.
 """
@@ -217,19 +231,19 @@ def edit_profile(request):
     return render(request=request, template_name="edit_profile.html", context={"user": request.user, "user_form":user_form })
 
 
-@login_required(login_url='/accounts/login/')
-def create_profile(request):
-    if request.method == 'POST':
-        form = UserForm(request.POST, request.FILES)
-        profile = form.save(commit=False)
-        profile.user = request.user
-        messages.success(request, 'Upload successful!')
-        post.save()
-        # return redirect('/')
-        return redirect('student_gallery')
-    else:
-        form = UserForm()
-    return render(request, 'profile.html', {'form': form})
+# @login_required(login_url='/accounts/login/')
+# def create_profile(request):
+#     if request.method == 'POST':
+#         form = UserForm(request.POST, request.FILES)
+#         profile = form.save(commit=False)
+#         profile.user = request.user
+#         messages.success(request, 'Upload successful!')
+#         post.save()
+#         # return redirect('/')
+#         return redirect('student_gallery')
+#     else:
+#         form = UserForm()
+#     return render(request, 'profile.html', {'form': form})
 
 
 """

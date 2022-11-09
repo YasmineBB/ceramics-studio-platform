@@ -66,6 +66,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
