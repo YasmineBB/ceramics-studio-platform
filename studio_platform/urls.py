@@ -13,6 +13,6 @@ urlpatterns = [
     # path('edit_profile/', views.UserEditView.as_view(), name='edit_profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('create_profile/', views.ProfileCreateView.as_view(), name='create_profile'),
-    # path('profile/', views.ProfileDetail.as_view(), name='profile'),
+    path('profile/<int:pk>', views.ProfileDetail.as_view(), name='profile_view'),
     # path("post/edit/<int:pk>", views.UpdatePostView.as_view(), name="update_image"),
 ]

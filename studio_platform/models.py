@@ -69,5 +69,5 @@ class UserProfile(models.Model):
     bio = models.TextField(max_length=200)
     profile_picture = CloudinaryField('image')
     
-    def __str__(self):
-        return 'hello'
+    # def __str__(self):
+    #     return self.username

@@ -6,30 +6,36 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
+
 
 <div class="container mx-auto">
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-3 pb-4">
+        <div class="col-md-8 pb-4">
             <div class="card p-4">
-                <h4 class="card-title font-weight-bold text-center">Hello, {{ user.username|title }}</h4>
+                <!-- <h4 class="card-title font-weight-bold text-center">Hello, {{ user.get_username|title }}</h4> -->
                 <hr>
-                <div class=" card-text">
-                    <p><img class="rounded-circle" src="{{ user.user_profile.profile_picture.url }}">Profile Picture:
-                    </p>
-                    <p>{{ user_profile.profile_picture }} </p>
+                <div class="card-text text-center">
+                    <p class="text-muted mb-0">Profile Picture:</p>
+                    <img style='   
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;' class="img-thumbnail mb-2 rounded-circle"
+                        src=" {{ profile.profile_picture.id }}">
                     <p class="text-muted mb-0">Username:</p>
-                    <p>{{ user }}</p>
-                    <!-- <p class="text-muted mb-0">First Name:</p>
-                    <p>{{ user_profile.first_name }} {{ user_profile.last_name }}</p>
+                    <!-- <p>{{ user.get_username }}</p> -->
+                    <p class="text-muted mb-0">First Name:</p>
+                    <p>{{ profile.first_name.id }}</p>
                     <p class="text-muted mb-0">Last Name:</p>
-                    <p>{{ user_profile.last_name }}</p> -->
+                    <p>{{ user.profile.last_name }}</p>
                     <p class="text-muted mb-0">Bio:</p>
-                    <p>{{ user_profile.bio }} </p>
+                    <p>{{ user.profile.bio }} </p>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#profileModal">Edit Profile</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endif %}
 {% endblock %}
