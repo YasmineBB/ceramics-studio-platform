@@ -8,7 +8,7 @@
 
 I developed the idea for *Social Ceramics* after taking a 12-week pottery class which provided me with so much inspiration not only creatively, but gave me the idea for creating a useful platform for a fictional ceramics studio.
 
-The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post studio updates and useful blog posts that would help the students with their progress, as well as the students being able to share their work, ideas and progress.
+The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post studio updates and useful blog posts that would help the students with their progress, as well as the students being able to share images that show their work, ideas and progress.
 
 ## User Experience
 
@@ -101,7 +101,15 @@ The user can click the *view post* button to see the post. If the user is the au
 
 #### Profile
 
-User also have the option of creating a profile with the following fields:
+When a user has created an account, in the navigation bar under the *Profile* dropdown, they are provided with the option to *Create Profile*.
+
+![create-profile-nav](media/images/screenshots/create-profile-nav.png)
+
+Once they have created a profile, this option changes to *View Profile*.
+
+![view-profile-nav](media/images/screenshots/view-profile-nav.png)
+
+The user has the option of creating a profile with the following fields:
 
 - First Name
 - Last Name
@@ -112,16 +120,15 @@ User also have the option of creating a profile with the following fields:
 
 The user can also edit their profile, for example changing their profile picture and editing their bio.
 
+### Future Features
 
-### Features For Future Implementation
+#### Student Profile
 
-#### Profile
-
-I would like to create a more in-depth profile page for each registered user.
+I would like to implement the ability for users to view each others' profile and wanted to do so in this project but didn't have enough time; however, it's something I plan to implement going forward.
 
 ## Issues and Bugs
 
-- Images and font not rendering on deployed site.
+### Fixed Bugs
 
 - Issue #1
   - I had a problem creating one particular blog post from the admin panel which, when published, it through off the layout.
@@ -135,6 +142,8 @@ I would like to create a more in-depth profile page for each registered user.
   ![Error-message](media/images/screenshots/ErrorMultipleObjects.png)
 
   I have the title and slug fields set to unique=False, but when I changed the title and slug and the issue was solved.
+
+- try except
 
 ## Technologies Used
 
@@ -167,11 +176,90 @@ I would like to create a more in-depth profile page for each registered user.
 
 ## Testing
 
+### Lighthouse Testing
+
 ## Deployment
 
 ### Deploying to Heroku
 
+To deploy the site from the GitHub repository to Heroku, the following steps were taken:
+
+1. Create the Heroku App:
+   - Click the 'New' button on the Heroku dashboard.
+   - Click 'Create New App':
+2. Give the app a unique name:
+   - I gave this project the name social-ceramics
+3. Select the region:
+   - In my case I selected Europe.
+4. Add the database:
+   - Click on the Resources tab
+   - In the 'Add-ons' box search for 'Heroku Postgres' and click it to add it to the project.
+   - Select 'Hobby Dev - free' from the 'plan name' dropdown and click 'Submit Order Form'.
+5. Prepare the environment:
+   - Click on the Settings tab.
+   - Click 'Reveal Config Vars' to display the DATABASE_URL.
+   - Copy the url next to DATABASE_URL.
+   - Return to the GitPod workspace.
+   - Create a file called env.py in the main directory.
+   - In the env.py file, set the following environment variables:
+     - Set the DATABASE_URL by pasting in the url copied from Heroku.
+     - Set the SECRET_KEY to your chosen value.
+   - Add the SECRET_KEY value to Config Vars in Heroku.
+6. Set up settings.py:
+   - At the top of the file, add the following:
+     - ```import os```
+     - ```import dj_database_url```
+     - ```if os.path.isfile('env.py'):import env```
+   - In the SECRET_KEY section, remove the insecure key and add in the environment variable:
+     - ```SECRET_KEY = os.environ.get('SECRET_KEY')```
+   - Set up the Postgres database:
+     - Delete the value from the DATABASES section and replace it with the following:
+     - ```DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL) }```
+   - Add Cloudinary libraries into INSTALLED_APPS section:
+     - ```INSTALLED_APPS = [ 'cloudinary_storage', 'django.contrib.staticfiles', 'cloudinary' ]```
+   - From the Cloudinary dashboard, copy the API Environment Variable by selecting 'copy to clipboard'.
+   - In the env.py file, set the CLOUDINARY_URL to the value copied from the clipboard. (Note: Remember to remove the CLOUDINARY_URL= part from the beginning of the copied value.)
+   - In your Heroku dashboard, add CLOUDINARY_URL to the Config Vars and paste the value copied from the clipboard.
+   - At the end of the settings.py file add the following:
+     - ```STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'```
+     - ```STATICFILES_DIRS = [os.path.join.(BASE_DIR, 'static')]```
+     - ```STATIC_ROOT = os.path..join(BASE_DIR, 'staticfiles')```
+     - ```MEDIA_URL = '/media/'```
+     - ```DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'```
+   - Let Django know where templates will be stored by adding the following to the top of the file, under BASE_DIR:
+     - ```TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')```
+   - In the TEMPLATES setting, change the DIRS key to the following:
+      - ```'DIRS': [TEMPLATES_DIR]',```
+   - Add Heroku host name into ALLOWED_HOSTS:
+      - ```ALLOWED_HOSTS = ['appname.herokuapp.com', 'localhost']```
+   - Create the following three folders in the main directory:
+     - media
+     - static
+     - templates
+   - Create a file named 'Procfile' in the main directory and enter the following in the file:
+     - ```web: gunicorn appname.wsgi```
+7. Commit and deploy to Heroku:
+   - Make an initial commit and push to the GitHub repository:
+     - ```git add .```
+     - ```git commit -m 'Initial deployment'```
+     - ```git push```
+   - Return to your Heroku dashboard.
+   - Click on the Deploy tab.
+   - Select GitHub for deployment method. (note: Connect your GitHub account if it isn't already.)
+   - In the 'Connect to GitHub section', search for your repository.
+   - Click connect.
+   - Scroll down to Manual deploy.
+   - Click Deploy Branch.
+   - Once the app has been deployed successfully, you can click 'Open App' to view. You should see a screen with the message 'The install worked successfully! Congratulations!'.
+
 ### Forking the Repository
+
+In order to fork the project, the following steps are to be followed:
+
+1. Log in to GitHub.
+2. Navigate to the repository.
+3. Find the 'Fork' button to the top right of the page.
+4. Once you click this button the fork will be in your repositories.
 
 ### Cloning the Repository
 
