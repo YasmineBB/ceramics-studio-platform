@@ -23,10 +23,6 @@ class PostView(generic.ListView):
     paginate_by = 6
 
 
-# class PostDetail(generic.DetailView):
-#     model = Post
-#     template_name = 'post_detail.html'
-
 """
 View for user to comment on blog posts.
 """
@@ -91,9 +87,10 @@ class AboutView(generic.TemplateView):
     template_name = "about.html"
 
 
-# class GalleryView(generic.TemplateView):
-#     template_name = "student_gallery.html"
-    
+"""
+View to display student creations feed.
+"""
+
 
 class StudentUploadView(generic.ListView):
     model = Post
@@ -102,11 +99,6 @@ class StudentUploadView(generic.ListView):
     template_name = "student_gallery.html"
     queryset = Post.objects.order_by("-created_on")
     paginate_by = 30
-
-
-# class LoginView(generic.TemplateView):
-#     template_name = "registration/login.html"
-
 
 
 """
@@ -134,36 +126,32 @@ def form_valid(self, form):
     return super().form_valid(form)
 
 
-
-# class ImageCreateView(CreateView):
-#     model = Post
-#     form_class = PostForm
-#     template_name = 'post.html'
-#     success_url = reverse_lazy('student_gallery')
-
-#     def form_valid(self, form):
-#         form.instance.user = self.request.user
-#         return super().form_valid(form)
-
-
 """
-User create profile view.
+View for user to create a profile.
 """
 
 
-class ProfileCreateView(generic.CreateView):
+class ProfileCreateView(UserPassesTestMixin, generic.CreateView):
     model = UserProfile
     form_class = UserForm
     template_name = 'create_profile.html'
-    success_url = reverse_lazy('create_profile')
+    success_url = reverse_lazy('edit_profile')
     
+    def test_func(self):
+        if hasattr(self.request.user, 'profile'):
+            return False
+        else:
+            return True
+        
     def form_valid(self, form):
         form.instance.username = self.request.user
+        messages.success(self.request, 'Profile created successfully!')
         return super().form_valid(form)
 
 
+
 """
-View for user to see their profile.
+View for user to view their profile.
 """
 
 
@@ -178,47 +166,8 @@ class ProfileDetail(generic.DetailView):
 
 
 """
-User edit profile view.
+View for user to edit their profile.
 """
-# message for user who tries to access the page without being logged in ('please sign in first')
-
-# @login_required(login_url='/accounts/login/')
-# class UserEditView(generic.UpdateView):
-#     form_class = UserChangeForm
-#     template_name = 'edit_profile.html'
-#     success_url = reverse_lazy('home')
-
-#     def get_object(self):
-#         return self.request.user
-        # messages.success(request, 'Upload successful!')
-        # return redirect('home')
-
-
-"""
-User view profile view
-"""
-# def userpage(request):
-# 	user_form = UserForm(instance=request.user)
-# 	profile_form = ProfileForm(instance=request.user.profile)
-# 	return render(request=request, template_name="profile.html", context={"user":request.user, "user_form":user_form, "profile_form":profile_form })
-
-
-# def profile(request):
-#     if request.method == 'POST':
-#         user_form = UpdateUserForm(request.POST, instance=request.user)
-#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
-
-#         if profile_form.is_valid():
-#             user_form.save()
-#             profile_form.save()
-#             messages.success(request, 'Your profile is updated successfully')
-#             return redirect(to='profile')
-#     else:
-#         user_form = UpdateUserForm(instance=request.user)
-#         profile_form = UpdateProfileForm(instance=request.user.profile)
-
-#     return render(request, 'templates/profile.html', {'profile_form': profile_form})
-
 
 
 @login_required(login_url='/accounts/login/')
@@ -234,34 +183,11 @@ def edit_profile(request):
             messages.error(request, 'Unable to complete request')
             print('form invalid')
         return redirect("edit_profile")
-    user_form = UserForm(instance=request.user.profile)
-    return render(request=request, template_name="edit_profile.html", context={"user": request.user, "user_form":user_form })
-
-# class edit_profile(generic.UpdateView):
-#     model = UserProfile
-#     template_name = 'edit_profile.html'
-#     fields = ['first_name', 'last_name', 'bio',]
-    
-#     def get_success_url(self):
-#         edit_profile = self.kwargs['pk']
-#         # post.user = request.user
-#         return reverse_lazy('edit_profile', kwargs={'pk': edit_profile})
-
-
-# @login_required(login_url='/accounts/login/')
-# def create_profile(request):
-#     if request.method == 'POST':
-#         form = UserForm(request.POST, request.FILES)
-#         profile = form.save(commit=False)
-#         profile.user = request.user
-#         messages.success(request, 'Upload successful!')
-#         post.save()
-#         # return redirect('/')
-#         return redirect('student_gallery')
-#     else:
-#         form = UserForm()
-#     return render(request, 'profile.html', {'form': form})
-
+    try:
+        user_form = UserForm(instance=request.user.profile)
+        return render(request=request, template_name="edit_profile.html", context={"user": request.user, "user_form":user_form })
+    except:
+        return redirect('create_profile')
 
 """
 View to allow user to update make changes to their image post.
@@ -276,11 +202,12 @@ class UpdateImageView(generic.UpdateView):
     def get_success_url(self):
         post = self.kwargs['pk']
         # post.user = request.user
+        messages.success(self.request, 'Your changes have been saved!')
         return reverse_lazy('image_detail', kwargs={'pk': post})
 
 
 """
-View to allow user to view an particular image.
+View to allow user to view an particular image from the student creations page.
 """
 
 

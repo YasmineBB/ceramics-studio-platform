@@ -1,6 +1,6 @@
 # Social Ceramics
 
-- Link to site
+- [Link](https://social-ceramics.herokuapp.com/) to live site.
 
 ## Table of Contents
 
@@ -8,7 +8,7 @@
 
 I developed the idea for *Social Ceramics* after taking a 12-week pottery class which provided me with so much inspiration not only creatively, but gave me the idea for creating a useful platform for a fictional ceramics studio.
 
-The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post interesting and useful blog posts that would help the students with their progress, as well as the students being able to share their work, ideas and progress.
+The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post studio updates and useful blog posts that would help the students with their progress, as well as the students being able to share their work, ideas and progress.
 
 ## User Experience
 
@@ -98,6 +98,19 @@ This page acts as a feed to display all of the student posts. It is paginated to
 ![student-creations](https://media.giphy.com/media/KKCn6jnUpkZH8vT4Nd/giphy.gif)
 
 The user can click the *view post* button to see the post. If the user is the author of the post, the are provided with the option to make changes to or delete their post. This is not visible to other users so that only the author has access to make any changes.
+
+#### Profile
+
+User also have the option of creating a profile with the following fields:
+
+- First Name
+- Last Name
+- Bio
+- Profile Picture
+
+![profile](media/images/screenshots/profile.png)
+
+The user can also edit their profile, for example changing their profile picture and editing their bio.
 
 
 ### Features For Future Implementation
