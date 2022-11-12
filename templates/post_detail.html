@@ -5,14 +5,13 @@
 
 <div class="container-fluid mb-5 mt-4">
     <div class="row">
-        <!-- <h2 class="mt-5 mb-5 display-6">{{ post.caption }}</h2> -->
         <div class="d-md-block col-md-6 masthead-image mt-4">
-            <!-- The featured image URL goes in the src attribute -->
             {% if "placeholder" in post.image.url %}
             <img class="img-thumbnail"
-                src="https://res.cloudinary.com/duuy3s065/image/upload/c_scale,h_330,w_500/v1665419331/sc_logo_g3dvey.png">
+                src="https://res.cloudinary.com/duuy3s065/image/upload/c_scale,h_330,w_500/v1665419331/sc_logo_g3dvey.png"
+                alt="social-ceramics-logo">
             {% else %}
-            <img class="text-center img-thumbnail" src=" {{ post.image.url }}">
+            <img class="text-center img-thumbnail" src=" {{ post.image.url }}" alt="{{ post.caption }}">
             {% endif %}
         </div>
     </div>
@@ -35,13 +34,11 @@
 <div class="row">
 
     <div class="col-1">
-        <!-- The number of likes goes before the closing strong tag -->
         <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.number_of_likes }} </strong>
     </div>
     <div class="col-1">
         {% with comment.count as total_comments %}
         <strong class="text-secondary"><i class="far fa-comments"></i>
-            <!-- Our total_comments variable goes before the closing strong tag -->
             {{ total_comments }}</strong>
         {% endwith %}
     </div>
@@ -56,23 +53,18 @@
 </div>
 <div class="row">
     <div class="col-md-8 card mb-4 mt-3">
-        <h3 class="display-6 mt-3">Comments:</h3>
-        <div class="card-body">
-            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+        <h3 class="display-6 m-4">Comments:</h3>
+        <div class="card-body m-1">
             {% for comments in comment %}
             <div class="comments" style="padding: 10px;">
                 <p class="font-weight-bold">
-                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
                     {{ comments.name }}
                     <span class=" text-muted font-weight-normal">
-                        <!-- The comment's created date goes here -->
                         {{ comments.posted_on }}
                     </span> wrote:
                 </p>
-                <!-- The body of the comment goes before the | -->
                 {{ comments.comment_body | linebreaks }}
             </div>
-            <!-- Our for loop ends here -->
             {% endfor %}
         </div>
     </div>

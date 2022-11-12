@@ -1,0 +1,21 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: [example.com] Password Reset E-mail
+From: webmaster@localhost
+To: y.bourhabi@gmail.com
+Date: Sat, 12 Nov 2022 01:50:42 -0000
+Message-ID: <166821784217.6279.17811587150553563044@localhost>
+
+Hello from example.com!
+
+You're receiving this e-mail because you or someone else has requested a password for your user account.
+It can be safely ignored if you did not request a password reset. Click the link below to reset your password.
+
+http://localhost:8000/accounts/password/reset/key/j-ber6gi-1542a86bf7caebe00ddda9f05522ec92/
+
+In case you forgot, your username is yasmine101.
+
+Thank you for using example.com!
+example.com
+-------------------------------------------------------------------------------

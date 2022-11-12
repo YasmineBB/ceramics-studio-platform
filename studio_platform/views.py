@@ -50,7 +50,6 @@ class PostDetail(View):
             },
         )
 
-
     def post(self, request, slug, *args, **kwargs):
 
         queryset = Post.objects.filter(status=1)
@@ -136,18 +135,17 @@ class ProfileCreateView(UserPassesTestMixin, generic.CreateView):
     form_class = UserForm
     template_name = 'create_profile.html'
     success_url = reverse_lazy('edit_profile')
-    
+
     def test_func(self):
         if hasattr(self.request.user, 'profile'):
             return False
         else:
             return True
-        
+
     def form_valid(self, form):
         form.instance.username = self.request.user
         messages.success(self.request, 'Profile created successfully!')
         return super().form_valid(form)
-
 
 
 """
@@ -159,7 +157,7 @@ class ProfileDetail(generic.DetailView):
     model = UserProfile
     template_name = 'profile.html'
     context_object_name = 'profile'
-    
+
     def get_queryset(self):
         user = self.request.user
         return user.objects.filter(username=user)
@@ -174,7 +172,8 @@ View for user to edit their profile.
 def edit_profile(request):
     if request.method == "POST":
         # profile = UserProfile.objects.get(username=request.user)
-        user_form = UserForm(request.POST, request.FILES, instance=request.user.profile)
+        user_form = UserForm(request.POST, request.FILES,
+                             instance=request.user.profile)
         print(request.POST)
         if user_form.is_valid():
             user_form.save()
@@ -185,9 +184,11 @@ def edit_profile(request):
         return redirect("edit_profile")
     try:
         user_form = UserForm(instance=request.user.profile)
-        return render(request=request, template_name="edit_profile.html", context={"user": request.user, "user_form":user_form })
+        return render(request=request, template_name="edit_profile.html",
+                      context={"user": request.user, "user_form": user_form})
     except:
         return redirect('create_profile')
+
 
 """
 View to allow user to update make changes to their image post.
@@ -197,8 +198,8 @@ View to allow user to update make changes to their image post.
 class UpdateImageView(generic.UpdateView):
     model = Post
     template_name = 'update_image.html'
-    fields = ['image', 'caption',]
-    
+    fields = ['image', 'caption', ]
+
     def get_success_url(self):
         post = self.kwargs['pk']
         # post.user = request.user

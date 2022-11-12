@@ -62,6 +62,7 @@ class Comment(models.Model):
 User profile model
 """
 
+
 class UserProfile(models.Model):
     username = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=50)

@@ -11,7 +11,7 @@
     <p class="display-6">Here at Social Ceramics we encourage you to share your work with your fellow students! You
         may
         find
-        some inspiration along the way <em>{{ user.username }} </em>!</p>{{ user.profile.id }}
+        some inspiration along the way <em>{{ user.username }} </em>!</p>
 
     <div class="mt-5">
 
@@ -20,7 +20,6 @@
             <div class="col-md-4">
                 <div>
                     <p><i class="fa-regular fa-user me-3"></i>{{photo.user}}</p>
-                    <a href="{% url 'profile_view' user.profile.id %}">profile</a>
                     <p><small><em>{{photo.caption|slice:50}}...</em></small></p><span> <a
                             href="{% url 'image_detail' photo.id %}" class="post-btn btn btn-outline-dark btn-sm">View
                             Post
