@@ -137,8 +137,8 @@ ACCOUNT_FORMS = {
     'signup': 'studio_platform.forms.CustomSignupForm',
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
