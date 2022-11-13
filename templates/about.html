@@ -1,22 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block content %}
 
-<!-- <div class="container-fluid">
-    <img src="https://images.pexels.com/photos/6692604/pexels-photo-6692604.jpeg?cs=srgb&dl=pexels-cottonbro-6692604.jpg&fm=jpg"
-        class="mw-100 h-50" alt="...">
-
-</div> -->
-
-<!-- <h2 class="d-flex justify-content-center">Meet The Team</h2>
-<hr> -->
 <div class="container-fluid about mb-5">
     <p class="d-flex display-4">Meet The Team</p>
     <hr>
     <div class="row featurette">
         <div class="col-md-5">
-            <img src="https://images.pexels.com/photos/4241332/pexels-photo-4241332.jpeg?cs=srgb&dl=pexels-gustavo-fring-4241332.jpg&fm=jpg"
+            <img src="{% static 'images/teacher1.jpeg' %}"
                 alt="Stella, a teacher at Social Ceramics, holds a selection of bowls she has created.">
         </div>
         <div class="col-md-7">
@@ -34,7 +27,7 @@
     <hr>
     <div class="row featurette">
         <div class="col-md-5">
-            <img src="https://images.unsplash.com/photo-1632819506620-cc0f984af43a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+            <img src="{% static 'images/teacher3-min.jpg' %}"
                 alt="Michael, a teacher at Social Ceramics, paints a pot he has created with slip in the studio.">
         </div>
         <div class="col-md-7">
@@ -50,7 +43,7 @@
     <hr>
     <div class="row featurette">
         <div class="col-md-5">
-            <img src="https://images.unsplash.com/photo-1625742699654-dfa49a8f36a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=800"
+            <img src="{% static 'images/teacher2-min.jpg' %}"
                 alt="Stella, a teacher at Social Ceramics, smiles holding two pots she has hand built.">
         </div>
         <div class="col-md-7">
@@ -66,7 +59,7 @@
     <hr>
     <div class="row featurette">
         <div class="col-md-5">
-            <img src="https://images.pexels.com/photos/6694315/pexels-photo-6694315.jpeg?cs=srgb&dl=pexels-cottonbro-6694315.jpg&fm=jpg"
+            <img src="{% static 'images/teacher4-min.jpg' %}"
                 alt="Nora, a teacher at Social Ceramics, in the process of hand building a clay pot.">
         </div>
         <div class="col-md-7">
@@ -85,4 +78,4 @@
 </div>
 
 
-{%endblock content%}
+{% endblock %}

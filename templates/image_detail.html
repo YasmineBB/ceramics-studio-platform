@@ -18,7 +18,7 @@
             <div class="d-md-block col-md-6">
                 <p><i class="fa-regular fa-user me-3"></i>
                     <strong>{{photo.user}}</strong></p>
-                <img class="img-thumbnail" src=" {{ photo.image.url }}">
+                <img class="img-thumbnail" src=" {{ photo.image.url }}" alt="{{ photo.caption }}">
                 <p class="mt-3"><em>{{ photo.caption }}</em></p>
             </div>
             {% if user.is_authenticated %}
