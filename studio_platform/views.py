@@ -147,7 +147,6 @@ def new_post(request):
         post.user = request.user
         messages.success(request, 'Upload successful!')
         post.save()
-        # return redirect('/')
         return redirect('student_gallery')
     else:
         form = PostForm()

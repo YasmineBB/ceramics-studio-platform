@@ -15,7 +15,6 @@ The initial idea was to build a sharing platform, hence the name Social Ceramics
 
 ### User Stories
 
-
 I have categorised my proposed users for this project as the following:
 
 #### Site User
@@ -37,7 +36,10 @@ As a **Current Site User** I can:
 - *Share my work on the platform so that I can be an active member of the Social Ceramics studio.*
 - *Make changes to my shared posts so that I can ensure I share exactly what I want to or edit any spelling mistakes.*
 - *Delete my shared posts so that I can share exactly what I want to.*
+- *Comment and like on student posts.*
 - *Create a profile so that my experience feels more personal.*
+- *Edit my profile so that my experience feels more personal.*
+- *View other students profiles so that my experience feels more personal*
 
 As a **Prospective Site User** I can:
 
@@ -56,15 +58,49 @@ The idea is that the blog posts will cover interesting topics that a ceramics st
   - *Approve comments on posts so that I can filter objectionable comments.*
   - *Assign staff status to other teachers so that they can create blog posts and manage the Social Ceramics platform.*
 
-## Development
+## Planning and Development
 
 I started the initial planning of the site using Notion, where I wrote down my ideas, user stories and direction for the site including features, which I would then edit down based on viability and to keep on track with an MVP. I found it useful I then created issues, including my user stories which I assigned to the dedicated projects board for the project.
 
 I did find it quite challenging at times but also found it helpful in keeping me focused on the tasks and on track with the overall project.
 
-I also used Figmas FigJam during the planning and development stages which I found helpful to my progress as a visual learner.
+#### Strategy
 
-I then 
+As a ceramics studio, the importance of maximising the students learning and development is key. As with all skills, the learning process should be engaging and informative to keep the students involved and ensure they are getting the most out of the process.
+
+Being part of a likeminded community and making the experience social can help to encourage the students to reach their full potential by being involved with the studio.
+
+Social Ceramics aims to build this community by:
+
+- Providing useful information that students can make use of alongside their practice, in the form of blog posts by the studio teachers.
+- Providing students with a platform to share their work and view the work of their fellow students at the studio. 
+
+<!-- I also used Figmas FigJam during the planning and development stages which I found helpful to my progress as a visual learner. -->
+
+
+
+I created the following strategy table to determine the trade-off of importance versus viability:
+
+| Feature      | Importance | Viability |
+| -------- | -----------| ------------------|
+| Create an account / log in to access the sites features | 5 | 5 |
+| Navigate throughout the site with ease | 5 | 5 |
+| View teacher blog posts  | 5 | 5 |
+| View comments / likes on teacher blog posts | 4 | 4 |
+| Comment on blog posts | 4 | 4 |
+| Like blog posts | 4 | 4 |
+| Share my work | 5 | 5 |
+| Make changes to my image posts | 5 | 5 |
+| Delete my image posts | 5 | 5 |
+| Create a profile | 3 | 3 |
+| Edit my profile | 4 | 4 |
+| View other students profiles | 3 | 2 |
+| Admin CRUD | 5 | 5 |
+| Admin approve comments | 5 | 5 |
+| Assign staff status | 3 | 5 |
+
+
+
 
 ## Design
 
