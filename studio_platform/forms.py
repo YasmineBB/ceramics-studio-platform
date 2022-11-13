@@ -13,13 +13,12 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('caption', 'image',)
+        
 
+"""
+Custom form to add first and last name to sign up form.
+"""
 
-
-# class CustomSignupForm(SignupForm):
-#     username = forms.CharField(required=True)
-#     email = forms.EmailField(required=True)
-    # password = forms.PasswordInput(required=True)
 
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='First Name')
@@ -34,10 +33,10 @@ class CustomSignupForm(SignupForm):
 
 
 
-class UploadForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ('caption', 'image', 'description', 'user',)
+# class UploadForm(forms.ModelForm):
+#     class Meta:
+#         model = Post
+#         fields = ('caption', 'image', 'description', 'user',)
 
 
 """

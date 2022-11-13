@@ -8,6 +8,7 @@
     {% if user.id == photo.user.id %}
     <p class="display-4">{{photo.user}}</p><span>
         <p>This is one of your posts!</p>
+
     </span>
     {% endif %}
     {% endif %}
@@ -19,15 +20,10 @@
                     <strong>{{photo.user}}</strong></p>
                 <img class="img-thumbnail" src=" {{ photo.image.url }}">
                 <p class="mt-3"><em>{{ photo.caption }}</em></p>
-                {% for post in post_list %}
-                <a href="{{ url 'post_detail' post.slug }}" class="post-btn btn btn-outline-dark btn-sm">Read More
-                    &rarr;</a>
-                {% endfor %}
             </div>
             {% if user.is_authenticated %}
             {% if user.id == photo.user.id %}
             <div class="row d-flex justify-content-between pb-3">
-                <p>This is one of your posts {{ user.username }}!</p>
                 <div class="d-flex">
                     <a class="btn btn-sm btn-outline-dark" href="{% url 'update_image' photo.pk %}">Edit Image</a>
                 </div>

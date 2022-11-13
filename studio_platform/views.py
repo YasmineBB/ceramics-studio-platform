@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, UserProfile
-from .forms import PostForm, UploadForm, UserForm, CommentForm
+from .forms import PostForm, UserForm, CommentForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
@@ -114,6 +114,10 @@ def ImageLike(request, pk):
     return HttpResponseRedirect(reverse('image_detail', args=[str(pk)]))
 
 
+""""
+View to display and be directed to about page.
+"""
+
 
 class AboutView(generic.TemplateView):
     template_name = "about.html"
@@ -129,7 +133,7 @@ class StudentUploadView(generic.ListView):
     form_class = PostForm()
     context_object_name = 'photos'
     template_name = "student_gallery.html"
-    queryset = Post.objects.order_by("-created_on")
+    queryset = Post.objects.order_by("-created_on").filter(status=0)
     paginate_by = 30
 
 
@@ -140,7 +144,6 @@ View for users to upload an image.
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
-    queryset = Post.objects.filter(status=0)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         post = form.save(commit=False)
@@ -163,7 +166,7 @@ View for user to create a profile.
 """
 
 
-class ProfileCreateView(UserPassesTestMixin, generic.CreateView):
+class ProfileCreateView(UserPassesTestMixin, LoginRequiredMixin, generic.CreateView):
     model = UserProfile
     form_class = UserForm
     template_name = 'create_profile.html'
@@ -182,21 +185,6 @@ class ProfileCreateView(UserPassesTestMixin, generic.CreateView):
 
 
 """
-View for user to view their profile.
-"""
-
-
-class ProfileDetail(generic.DetailView):
-    model = UserProfile
-    template_name = 'profile.html'
-    context_object_name = 'profile'
-
-    def get_queryset(self):
-        user = self.request.user
-        return user.objects.filter(username=user)
-
-
-"""
 View for user to edit their profile.
 """
 
@@ -204,7 +192,6 @@ View for user to edit their profile.
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
     if request.method == "POST":
-        # profile = UserProfile.objects.get(username=request.user)
         user_form = UserForm(request.POST, request.FILES,
                              instance=request.user.profile)
         print(request.POST)
@@ -235,7 +222,6 @@ class UpdateImageView(generic.UpdateView):
 
     def get_success_url(self):
         post = self.kwargs['pk']
-        # post.user = request.user
         messages.success(self.request, 'Your changes have been saved!')
         return reverse_lazy('image_detail', kwargs={'pk': post})
 

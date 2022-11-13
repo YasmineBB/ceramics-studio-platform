@@ -2,6 +2,7 @@
 
 {% load i18n %}
 
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -11,7 +12,7 @@
     <div class="row">
         <div class="col-md-12 pb-4">
             <div class="card p-4">
-                <h4 class="card-title font-weight-bold text-center">Hello, {{ user.get_username|title }}</h4>
+                <h4 class="card-title font-weight-bold text-center display-6">Hello, {{ user.get_username|title }}</h4>
                 <hr>
                 <div class="card-text text-center">
                     <p class="text-muted mb-0">Profile Picture:</p>
@@ -51,7 +52,7 @@
             <div class="modal-body">
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ user_form.as_p }}
+                    {{ user_form | crispy }}
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save changes</button>

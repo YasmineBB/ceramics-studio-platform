@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
 <div class="container-fluid mb-5 mt-4">
     <div class="row">
         <div class="d-md-block col-md-6 masthead-image mt-4">
@@ -97,9 +99,9 @@
             <h3>Leave a comment:</h3>
             <p>Posting as: {{ user.username }}</p>
             <form method="post" style="margin-top: 1.3em;">
-                {{ comment_form }}
+                {{ comment_form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-success btn-signup btn-sm">Submit</button>
+                <button type="submit" class="btn btn-success btn-signup btn-sm mt-3">Submit</button>
             </form>
 
             {% else %}

@@ -1,40 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--Hero image-->
 
-<!-- <img src="https://images.pexels.com/photos/3094036/pexels-photo-3094036.jpeg?cs=srgb&dl=pexels-cottonbro-3094036.jpg&fm=jpg"
-    class="img-fluid" alt="Image of a ceramics studio."> -->
-
-<!-- <div class="container-fluid">
-    <div class="row">
-        {% if user.is_authenticated %}
-        Hi {{ user.username }}!
-        <div class="p-2"><a class="btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}">Log Out</a></div>
-        {% else %}
-        <p>You are not logged in!</p>
-        <div class="p-2"><a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}">Log In</a></div>
-        {% endif %}
-    </div>
-</div> -->
-<!-- <div class="container-fluid">
-    <div class="d-flex flex-row-reverse">
-        {% if user.is_authenticated %}
-        <div class="p-2">Hi {{ user.username }}!
-            <a class="p-2 btn btn-outline-dark btn-sm" href="{% url 'account_logout' %}">Log Out</a></div>
-        {% else %}
-        <div class="p-2">
-            <p>You are not logged in!</p>
-            <a class="btn btn-outline-dark btn-sm" href="{% url 'account_signup' %}">Register</a>
-            <a class="btn btn-outline-dark btn-sm" href="{% url 'account_login' %}">Log In</a>
-        </div>
-        {% endif %}
-    </div>
-    <hr>
-</div> -->
 
 <div class="container-fluid d-none d-sm-block">
-    <!-- Jumbotron -->
     <div class="p-5 text-center bg-image rounded-3" style="
     background-image: url('https://images.pexels.com/photos/4241339/pexels-photo-4241339.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
     height: 400px;
@@ -43,7 +12,7 @@
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white p-5">
 
-                    <h1 class="display-4">Building ceramics whilst building a community</h1>
+                    <h1 class="display-4">Building ceramics, building a community</h1>
                     {% if user.is_authenticated %}
                     <p class="lead">Take a look at the latest studio posts below, see other students work in the
                         <em>Students Creations</em> page and share your own
@@ -54,22 +23,21 @@
                     <p class="lead">Take a look at the latest studio posts below and don't forget to register or sign in
                         to share
                         your work!</p>
-                    <a class="btn btn-outline-light btn-lg" href="{% url 'account_login' %}" role="button">Sign in</a>
+                    <a class="btn btn-primary btn-lg" href="{% url 'account_login' %}" role="button">Sign in</a>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    <!-- Jumbotron -->
 </div>
 
-<!--When user logs in, include personalised welcome-->
+
 <div class="container-fluid">
     <div class="page-heading">
         <p class="mt-4 display-4">Latest Posts</p>
         <hr>
     </div>
-    <!-- Blog posts -->
+
     <div class="row">
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -93,7 +61,6 @@
                                 <a href="{{ post.slug }}" class="post-btn btn btn-outline-dark btn-sm">Read More
                                     &rarr;</a>
                                 <p>{{ post.created_on }}</p>
-                                <!-- <p class="card-text">{{ post.description | safe| slice:":100" }}</p> -->
                             </a>
                         </div>
                     </div>

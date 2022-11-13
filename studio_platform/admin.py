@@ -18,7 +18,8 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 """
-Class which allows the admin user to view, search for, filter and approve comments on posts.
+Class which allows the admin user to view, search for, filter and approve 
+comments on posts.
 """
 
 

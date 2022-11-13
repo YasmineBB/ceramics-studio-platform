@@ -1,4 +1,5 @@
 # Social Ceramics
+![home](media/images/screenshots/homepage.png)
 
 - [Link](https://social-ceramics.herokuapp.com/) to live site.
 
@@ -6,16 +7,20 @@
 
 ## Introduction
 
+Social
+
 I developed the idea for *Social Ceramics* after taking a 12-week pottery class which provided me with so much inspiration not only creatively, but gave me the idea for creating a useful platform for a fictional ceramics studio.
 
-The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio could post studio updates and useful blog posts that would help the students with their progress, as well as the students being able to share images that show their work, ideas and progress.
+The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio can post studio updates and useful blog posts that would help the students with their progress, as well as the students being able to share images that show their work, ideas and progress.
+
+This project is the fourth of five portfolio projects to complete during my full Stack Software Development programme with Code Institute.
 
 ## User Experience
 
 
 ### User Stories
 
-I have categorised my proposed users for this project as the following:
+I have categorised the proposed users for this project as the following:
 
 #### Site User
 
@@ -58,6 +63,11 @@ The idea is that the blog posts will cover interesting topics that a ceramics st
   - *Approve comments on posts so that I can filter objectionable comments.*
   - *Assign staff status to other teachers so that they can create blog posts and manage the Social Ceramics platform.*
 
+I dropped the following User Stories due to time constraints but plan to implement these in future development of this project.
+
+- *View other students profiles so that my experience feels more personal*
+- *Comment and like on student posts.*
+
 ## Planning and Development
 
 I started the initial planning of the site using Notion, where I wrote down my ideas, user stories and direction for the site including features, which I would then edit down based on viability and to keep on track with an MVP. I found it useful I then created issues, including my user stories which I assigned to the dedicated projects board for the project.
@@ -73,11 +83,7 @@ Being part of a likeminded community and making the experience social can help t
 Social Ceramics aims to build this community by:
 
 - Providing useful information that students can make use of alongside their practice, in the form of blog posts by the studio teachers.
-- Providing students with a platform to share their work and view the work of their fellow students at the studio. 
-
-<!-- I also used Figmas FigJam during the planning and development stages which I found helpful to my progress as a visual learner. -->
-
-
+- Providing students with a platform to share their work and view the work of their fellow students at the studio.
 
 I created the following strategy table to determine the trade-off of importance versus viability:
 
@@ -96,17 +102,54 @@ I created the following strategy table to determine the trade-off of importance 
 | Edit my profile | 4 | 4 |
 | View other students profiles | 3 | 2 |
 | Admin CRUD | 5 | 5 |
-| Admin approve comments | 5 | 5 |
+| Admin approve/delete comments | 5 | 5 |
 | Assign staff status | 3 | 5 |
+| Admin view user profiles | 5 | 5 |
+| Admin delete users/user profiles | 5 | 5 |
 
+#### Scope
 
+The scope was defined, guided by the strategy to align the features. The following categories explain what is required for this:
 
+- Content Requirements
+  - Students are able to:
+    - View informative and interesting blog posts.
+    - View other users comments on the blog posts.
+    - View other students work.
+    - Share their work.
 
-## Design
+#### Structure
+
+I created two site maps that visualise the user journey around the site. The maps below show the journey for the:
+
+- Site User
+- Site Admin
+
+##### Site User Map
+
+![site-map](media/images/screenshots/site-map.png)
+
+##### Site Admin Map
+
+![site-map-admin](media/images/screenshots/site-map-admin.png)
+
+#### Skeleton
+
+- [Wireframes](wireframes.md) can be found here.
+
+#### Surface
+
+##### Design
 
 The overall design is fairly minimalist, which I felt created a good base for the content to be viewed clearly and without too many distractions. I created a logo in Canva which is visible on all pages to maintain consistent branding.
 
 ![Social-Ceramics-Logo](./static/images/sc_logo.jpg)
+
+I used a white background as a base to provide a clear backdrop for the content on the site which is mostly images.
+
+The homepage contains a background image above the blog posts with a call-to-action prompting the user to log in or create an account to continue to experience the full features of the site.
+
+All of the CTA buttons on the site are consistent in styling, are prominent against the white background and the colours represent the desired action. For example the *Log In*, *Share* buttons are blue to represent a positive action. The *Edit* button on the users image and the *Read More* button under the blog posts on the home page are outlined in black to represent a neutral action. Finally, the *Delete Image* button in the users image detail page and *Sign Out* button on the Sign Out page are red because, as it denotes danger, it naturally gives the user pause before completing the action.
 
 ## Features
 
@@ -219,7 +262,9 @@ When I first developed the idea for this project, I wanted to feature a class bo
 
   I have the title and slug fields set to unique=False, but when I changed the title and slug and the issue was solved.
 
-- try except
+**Issue** I had an issue with blog posts incorrectly displaying on the *Student Creations* page rather than just the home page.
+
+- **Solution** In hindsight I should have created a separate field in the model for filtering. However, in the end I set a filter on the posts queryset in the StudentUpload view to filter by draft status as the posts uploaded by students were considered drafts in the database, compared to the teacher blog posts which had a status of published to be displayed on the home page.
 
 ### Current Issues/Bugs
 
@@ -233,6 +278,8 @@ When I first developed the idea for this project, I wanted to feature a class bo
 - Gitpod was the platform used to develop the project.
 - GitHub was used to build and host the repository, build the projects board and track issues.
 - Heroku was used to deploy the site.
+- [Balsamiq](https://balsamiq.com/) was used to create the wireframes.
+- [drawio](https://app.diagrams.net/) was used to create the site maps.
 
 ### Languages Used
 
@@ -258,6 +305,91 @@ When I first developed the idea for this project, I wanted to feature a class bo
   - Font Awesome was used for the icon that appears when a user is logged in.
 
 ## Testing
+
+### Manual Testing
+
+I conducted manual testing on all my user stories and the results are as follows:
+
+As a **Current Site User** I can:
+
+#### Log in with my credentials so that I can share my work and view the work of my fellow students
+
+| Test | Result | Verdict |
+|------|--------|---------|
+| Logged in with an account | Taken to the home page with full site access visible in the navigation bar | Pass |
+| Logged in with incorrect credentials | Receive message The username and/or password you specified are not correct and prompted to sign in again | Pass |
+
+#### Navigate through the platform easily so that I can interact with my fellow students
+
+| Test | Result | Verdict |
+|------|--------|---------|
+| Tested links in the navigation bar | Directed to each page | Pass |
+
+#### View blog posts from the studio so that I can gain knowledge, tips and skills to improve my practice
+
+| Test | Result | Verdict |
+|------|--------|---------|
+| Logged in with an account | Taken to the home page with full site access visible in the navigation bar | Pass |
+
+#### Comment on blog posts so that I can interact with the teachers and my fellow students
+
+#### View the comments made on blog posts by other users so that I can interact with my fellow potters at the studio
+
+#### View the work of other students so that I can be active in the Social Ceramics community
+
+Once logged in, the shared work by other students are visible to the user on the *Student Creations* page. A new post was created as a separate user for testing, which displayed on the page and was visible to on the page from other user accounts.
+
+#### Share my work on the platform so that I can be an active member of the Social Ceramics studio
+
+Images were uploaded with several test accounts to make sure they were displaying correctly on the *Student Creations* page which they were.
+
+#### Make changes to my shared posts so that I can ensure I share exactly what I want to or edit any spelling mistakes
+
+The caption and image shared were changed by clicking *Edit image* and these changed were displayed. 
+
+#### Delete my shared posts so that I can share exactly what I want to
+
+An image was shared and then deleted by clicking the *Delete Image* button.
+
+#### Create a profile so that my experience feels more personal
+
+Under the *Profile* dropdown in the navigation bar, if a user has created a profile, the option *View Profile* appears. If the user hasn't created a profile, the option *Create Profile* appears. A new user was created to test it works which it does. Their profile displays and the user can edit their profile from there.
+
+#### Edit my profile so that my experience feels more personal
+
+After creating a profile, the *Edit Profile* button was clicked and changed were made. The changes save to the users profile which is displayed after making the changes.
+
+As a **Prospective Site User** I can:
+
+#### View blog posts from the studio so that I can judge whether I want to be more involved in the studio
+
+The site was accessed, and all correct pages were displayed to users without an account.
+
+#### Sign up for an account so that I can share my work and view the work of my fellow students
+
+Several test accounts were created and users are taken to the homepage once they have created an account. The user is displayed a message that their *username is unique and cannot be changed*. If they create an account with a username that is already in the database, a message is displayed stating that.
+
+As a **Site Admin** I can :
+
+#### Create, read, update and delete posts so that I can manage the Social Ceramics platform
+
+Once logged in with admin credentials, a new post was created and published. In the admin panel, changes to the content were made
+
+#### Approve comments on posts so that I can filter objectionable comments
+
+#### Assign staff status to other teachers so that they can create blog posts and manage the Social Ceramics platform
+
+A 'teacher' account was created and assigned admin status. They are able to create, view, edit and delete posts as well as approve or delete comments made.
+
+#### Code Validation
+
+W3C Markup Validator
+
+Jigsaw Validator
+
+PEP8 Python Validator
+
+In my edit_profile view. After taking several steps to fix this late issue, the only method that was fixed this problem was a try/except block.
 
 ### Lighthouse Testing
 
