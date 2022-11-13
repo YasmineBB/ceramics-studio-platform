@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post, UserProfile
@@ -82,6 +82,39 @@ class PostDetail(View):
         )
 
 
+"""
+View for users to like user images.
+"""
+
+
+class PostLike(View):
+    
+    def post(self, request, slug, *args, **kwargs):
+        post = get_object_or_404(Post, slug=slug)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+"""
+View for users to like posts.
+"""
+
+
+def ImageLike(request, pk):
+    posts = get_object_or_404(Post, id=request.POST.get('photo_id'))
+    if posts.likes.filter(id=request.user.id).exists():
+        posts.likes.remove(request.user)
+        liked = False
+    else:
+        posts.likes.add(request.user)
+        liked = True
+    return HttpResponseRedirect(reverse('image_detail', args=[str(pk)]))
+
+
+
 class AboutView(generic.TemplateView):
     template_name = "about.html"
 
@@ -107,6 +140,7 @@ View for users to upload an image.
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
+    queryset = Post.objects.filter(status=0)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         post = form.save(commit=False)

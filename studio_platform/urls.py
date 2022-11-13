@@ -10,9 +10,10 @@ urlpatterns = [
     path('photo_detail/<int:pk>', views.ImageDetail.as_view(), name='image_detail'),
     path('<int:pk>/update_image/', views.UpdateImageView.as_view(), name='update_image'),
     path('<int:pk>/delete_image/', views.ImageDeleteView.as_view(), name='delete_image'),
-    # path('edit_profile/', views.UserEditView.as_view(), name='edit_profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('create_profile/', views.ProfileCreateView.as_view(), name='create_profile'),
     path('profile/<int:pk>', views.ProfileDetail.as_view(), name='profile_view'),
+    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
+    path('like/photo_detail/<int:pk>', views.ImageLike, name='image_like'),
     # path("post/edit/<int:pk>", views.UpdatePostView.as_view(), name="update_image"),
 ]

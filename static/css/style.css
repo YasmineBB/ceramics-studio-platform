@@ -96,12 +96,18 @@ p {
 
 /* Buttons */
 
-/* .btn {
-    border-radius: 10px;
-    font-size: 17.5px;
-    font-weight: 300;
+.btn-like {
+    color: #E84610;
+    border: none;
+    background: transparent;
+}
 
-} */
+.btn-like:hover,
+.btn-like:active {
+    color: #E84610;
+    background: transparent;
+    border: none;
+}
 
 .post-btn {
     margin: 10px 0;
