@@ -68,9 +68,11 @@ Below are the results of the Google Lighthouse testing for the site. I tested ea
 
 ## Image Detail | Desktop
 
-![image-detail-desktop]
+![image-detail-desktop](media/images/screenshots/image-detail-dekstop.png)
 
 ## Image Detail | Mobile
+
+![image-detail-mobile](media/images/screenshots/image-detail-mobile.png)
 
 ## Share Post | Desktop
 
@@ -96,4 +98,24 @@ Below are the results of the Google Lighthouse testing for the site. I tested ea
 
 ![edit-profile-mobile](media/images/screenshots/lh-editprofile-mobile.png)
 
-The main issues were performance on mobile devices. Going forward I will look into image resizing and will also adjust the aspect ratio on the Edit Profile page as this has reduced the score on Best Practices.
+## About | Desktop | Logged In
+
+![about-desktop-logged-in](media/images/screenshots/lh-about-desktop-logged-in.png)
+
+## About | Mobile | Logged In
+
+![about-mobile-logged-in](media/images/screenshots/lh-about-mobile-loggedin.png)
+
+## About | Desktop | Logged Out
+
+![about-desktop-logged-out](media/images/screenshots/lh-about-desktop-logged-out.png)
+
+## About | Mobile | Logged Out
+
+![about-mobile-logged-out](media/images/screenshots/lh-about-mobile-logged-out.png)
+
+Unfortunately there were some big issues with the about pages which had very low scores on performance and best practices which mostly came down to image sizing. The image links were to the external image source. When I saved the images to my static files and accessed them the links were displayed as broken on the page.
+
+My paths were set up correctly in settings.py and the files were being accessed as they should in the template. After spending a lot of time looking into it and trying different fixes to no avail, I decided to keep the images as they are so that they display for the purpose of the project and due to the time constraints at the time of conducting Lighthouse testing. Going forward I will conduct testing earlier on in development to avoid this problem and will properly implement correct image sizing with Cloudinary.
+
+Overall, the main issues on the other pages were performance on mobile devices. Going forward I will look into image resizing and will also adjust the aspect ratio on the Edit Profile page as this has reduced the score on Best Practices.

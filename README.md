@@ -1,4 +1,5 @@
 # Social Ceramics
+
 ![home](media/images/screenshots/homepage.png)
 
 - [Link](https://social-ceramics.herokuapp.com/) to live site.
@@ -7,22 +8,25 @@
 
 ## Introduction
 
-Social
-
 I developed the idea for *Social Ceramics* after taking a 12-week pottery class which provided me with so much inspiration not only creatively, but gave me the idea for creating a useful platform for a fictional ceramics studio.
 
 The initial idea was to build a sharing platform, hence the name Social Ceramics, where teachers at the studio can post studio updates and useful blog posts that would help the students with their progress, as well as the students being able to share images that show their work, ideas and progress.
 
 This project is the fourth of five portfolio projects to complete during my full Stack Software Development programme with Code Institute.
 
-## User Experience
+## Planning and Development
 
+I started the initial planning of the site using Notion, where I brainstormed my ideas, user stories and direction for the site including all features I'd like to have, which I then edited down based on viability and to keep on track with an MVP. I used GitHub to create issues for my user stories which I assigned to the dedicated projects board for the project.
 
-### User Stories
+I did find it quite challenging to implement everything as planned, but I do believe that with continued practice and development the process will be easier to undertake and stick to. However, I also found it helpful in keeping me focused on the tasks and on track with the overall project.
+
+### User Experience
+
+#### User Stories
 
 I have categorised the proposed users for this project as the following:
 
-#### Site User
+##### Site User
 
 - Current Site User
   - Students who are involved with Social Ceramics and are registered on the platform.
@@ -51,7 +55,7 @@ As a **Prospective Site User** I can:
 - *View blog posts from the studio so that I can judge whether I want to be more involved in the studio.*
 - *Sign up for an account so that I can share my work and view the work of my fellow students.*
 
-#### Site Admin
+##### Site Admin
 
 In this case, the Site Admin are the teachers at the studio. The teachers will be posting blog posts to the site which appear on the homepage and these posts are visible to all users, whether they have created an account on the platform, or whether they are a current student at the studio or a prospective student.
 
@@ -68,17 +72,11 @@ I dropped the following User Stories due to time constraints but plan to impleme
 - *View other students profiles so that my experience feels more personal*
 - *Comment and like on student posts.*
 
-## Planning and Development
-
-I started the initial planning of the site using Notion, where I wrote down my ideas, user stories and direction for the site including features, which I would then edit down based on viability and to keep on track with an MVP. I found it useful I then created issues, including my user stories which I assigned to the dedicated projects board for the project.
-
-I did find it quite challenging at times but also found it helpful in keeping me focused on the tasks and on track with the overall project.
-
 #### Strategy
 
-As a ceramics studio, the importance of maximising the students learning and development is key. As with all skills, the learning process should be engaging and informative to keep the students involved and ensure they are getting the most out of the process.
+As a ceramics studio, the importance of maximising the students' learning and development is key. As with all skills, the learning process should be engaging and informative to keep the students involved and ensure they are getting the most out of the process.
 
-Being part of a likeminded community and making the experience social can help to encourage the students to reach their full potential by being involved with the studio.
+Being part of a like-minded community and making the experience social can help to encourage the students to reach their full potential by being involved with the studio.
 
 Social Ceramics aims to build this community by:
 
@@ -106,6 +104,7 @@ I created the following strategy table to determine the trade-off of importance 
 | Assign staff status | 3 | 5 |
 | Admin view user profiles | 5 | 5 |
 | Admin delete users/user profiles | 5 | 5 |
+| Total | 70 | 76 |
 
 #### Scope
 
@@ -116,7 +115,13 @@ The scope was defined, guided by the strategy to align the features. The followi
     - View informative and interesting blog posts.
     - View other users comments on the blog posts.
     - View other students work.
+
+- Functionality Requirements
+  - Students are able to
     - Share their work.
+    - Comment and like blog posts.
+    - Navigate across the site easily.
+    - Create a profile for a more personalised experience.
 
 #### Structure
 
@@ -132,6 +137,10 @@ I created two site maps that visualise the user journey around the site. The map
 ##### Site Admin Map
 
 ![site-map-admin](media/images/screenshots/site-map-admin.png)
+
+Below is the Entity Relationship Diagram for the project:
+
+![erd](media/images/screenshots/ERD..png)
 
 #### Skeleton
 
@@ -151,11 +160,33 @@ The homepage contains a background image above the blog posts with a call-to-act
 
 All of the CTA buttons on the site are consistent in styling, are prominent against the white background and the colours represent the desired action. For example the *Log In*, *Share* buttons are blue to represent a positive action. The *Edit* button on the users image and the *Read More* button under the blog posts on the home page are outlined in black to represent a neutral action. Finally, the *Delete Image* button in the users image detail page and *Sign Out* button on the Sign Out page are red because, as it denotes danger, it naturally gives the user pause before completing the action.
 
+## Agile Development Phase
+
+As mentioned earlier, I used GitHub to track my progress during the development of this project. I created issues for User Stories, assigned acceptance criteria and tasks for each one.
+
+Projects Board In Progress:
+
+![progress](media/images/screenshots/in-progress.png)
+
+Projects Board In Done:
+
+![done](media/images/screenshots/project-done.png)
+
 ## Features
 
 ### Current Features
 
 #### Homepage
+
+The homepage displays blog posts made by teachers at the studio and all visitors, logged in or out can view the content. There are clear call-to-action buttons to prompt the user to log-in or sign-up.
+
+![home](media/images/screenshots/home-1.png)
+
+The page contains pagination to display 6 blog posts per page and users can navigate to the following pages using the links.
+
+![pagination](media/images/screenshots/home3.png)
+
+At the bottom of the page there is a simple footer linking to the studios social media platforms. These arent made but in future production they would be.
 
 ##### Navigation
 
@@ -182,6 +213,20 @@ If they are not logged in, they are prompted to Sign In.
 Ideally, I would like to implement an authorisation system so that only students who are involved with the studio, either using the studio space or taking classes, can register for an account. For example, they sign up with credentials which would include selecting the class they are taking, with this information being checked against a database.
 
 Another idea is that they are sent a sign-up link where they can create an account, the sign-up option would then not be visible on the homepage only the option to log-in. This would be more secure, but I haven't looked into that for the purpose of this project!
+
+#### Blog Detail Page
+
+Once the user clicks on the *Read More* button on each blog post, they are taken to a separate page to read the post.
+
+![blog-detail](media/images/screenshots/blog-detail.png)
+
+Comments are displayed at the bottom of the post and if the user isn't logged in, they are prompted to in order to comment and like.
+
+![comments](media/images/screenshots/comments.png)
+
+Once logged in, the user can leave comments.
+
+![comments-logged-in](media/images/screenshots/comments2.png)
 
 #### About Page
 
@@ -273,6 +318,10 @@ So I then created a new test blog post, and it worked fine.
 
 - **Solution** In hindsight I should have created a separate field in the model for filtering. However, in the end I set a filter on the posts queryset in the StudentUpload view to filter by draft status as the posts uploaded by students were considered drafts in the database, compared to the teacher blog posts which had a status of published to be displayed on the home page.
 
+**Bug** I had an issue with Summernote when I copy and pasted content into the editor. The format was thrown off and it wasn't responsive on the site.
+
+- **Solution** By selecting the Helvetica Neue font and justifying the content, it seemed to work fine. When typing directly into the editor the font inherits the Alumni Sans font from the stylesheet. At the moment this wasn't a big issue and in theory the teachers will be writing their own content for the site but it's something I'll look into further going forward.
+
 ### Current Issues & Bugs
 
 **Bug** When a user comments on a blog post, the comments that are already there disappear. I wasn't able to find a solution to this in time but will look into it in the future.
@@ -332,22 +381,15 @@ As a **Current Site User** I can:
 
 #### Log in with my credentials so that I can share my work and view the work of my fellow students
 
-| Test | Result | Verdict |
-|------|--------|---------|
-| Logged in with an account | Taken to the home page with full site access visible in the navigation bar | Pass |
-| Logged in with incorrect credentials | Receive message The username and/or password you specified are not correct and prompted to sign in again | Pass |
+Several test accounts were used to log in and worked as they should. The user is taken to the homepage with full access visible in the navigation bar. If incorrect login details are entered, the user receives a message saying the *username and/or password you specified are not correct* and prompted to sign in again.
 
 #### Navigate through the platform easily so that I can interact with my fellow students
 
-| Test | Result | Verdict |
-|------|--------|---------|
-| Tested links in the navigation bar | Directed to each page | Pass |
+Links in the navigation bar work correctly and take the user to each intended page. The links work for users who are logged in and out. The option to log out for the logged-in user is always visible and there are CTA buttons on the home page to prompt users.
 
 #### View blog posts from the studio so that I can gain knowledge, tips and skills to improve my practice
 
-| Test | Result | Verdict |
-|------|--------|---------|
-| Logged in with an account | Taken to the home page with full site access visible in the navigation bar | Pass |
+Accessing the site without an account and also testing the view from several test accounts display the blog posts on the homepage with pagination and the links to each post take the user to the respective pages.
 
 #### Comment on blog posts so that I can interact with the teachers and my fellow students
 
@@ -428,6 +470,8 @@ The only other error is in my edit_profile view. After taking several steps to f
 ![pep8-error](media/images/screenshots/python-testing.png)
 
 ### Lighthouse Testing
+
+Lighthousetesting results can be found [here](lighthousetesting.md).
 
 ## Deployment
 
@@ -544,6 +588,9 @@ The following sites were used for blog content on the site:
 
 - [The Little Pot Company](https://thelittlepotcompany.co.uk/blogs/pottery/how-to-centre-clay-the-one-sided-method-beginners-guide)
 - [The Crucible](https://www.thecrucible.org/guides/ceramics/handbuilding/)
+- [The Spruce Crafts](https://www.thesprucecrafts.com/the-basics-of-building-coil-pots-2745832)
+- [The Spruce Crafts](https://www.thesprucecrafts.com/how-to-make-handles-for-pottery-2745736)
+- [Expert Clay](https://expertclay.com/tips-throw-taller-pots-pottery-wheel/)
 
 ### Media
 
@@ -556,7 +603,7 @@ The following sites were used for blog content on the site:
 - Code Institute blog tutorial was used as a helpful basis. Commenting and likes features were used from the tutorial.
 - [Stack Overflow](https://stackoverflow.com/) various articles for general help.
 - [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) documentation.
-- 
+- [YouTube](https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi) was also a helpful source and the Codemy Django playlist was especially so.
 
 ### Acknowledgements
 
