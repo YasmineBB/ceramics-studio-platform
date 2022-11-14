@@ -201,6 +201,8 @@ I created a media query for smaller devices to maximise accessibility and make s
 
 Once a student has logged in, they have the option to share their work. This page becomes visible in the navigation bar as well as on the homepage jumbotron.
 
+![share](media/images/screenshots/share-page.png)
+
 #### Student Creations Page
 
 Once the user has logged in, the *Student Creations* page is visible in the navigation bar.
@@ -210,6 +212,11 @@ This page acts as a feed to display all of the student posts. It is paginated to
 ![student-creations](https://media.giphy.com/media/KKCn6jnUpkZH8vT4Nd/giphy.gif)
 
 The user can click the *view post* button to see the post. If the user is the author of the post, the are provided with the option to make changes to or delete their post. This is not visible to other users so that only the author has access to make any changes.
+
+#### Student Creations Image Detail
+
+Once clicked on the *Read More* button, the user is taken to a page that displays the image.
+![image-detail](media/images/screenshots/image-detail.png)
 
 #### Profile
 
@@ -240,11 +247,11 @@ I would like to implement the ability for users to view each others profile and 
 
 #### Classes
 
-When I first developed the idea for this project, I wanted to feature a class booking system where students could log in and book onto classes at the studio. If this project was implemented in reality, I believe that the current set of features 
+When I first developed the idea for this project, I wanted to feature a class booking system where students could log in and book onto classes at the studio. This is another feature I would like to implement going forward.
 
 ## Issues and Bugs
 
-### Fixed Issues/Bugs
+### Fixed Issues & Bugs
 
 **Bug** When a user signed up with an email address, an OSError was thrown.
 
@@ -254,7 +261,7 @@ When I first developed the idea for this project, I wanted to feature a class bo
 ![Bug](media/images/screenshots/bug.png)
 
 - **Solution** I changed the status of this post to draft, and it went back to normal. I then tested the length of the description, so I edited it down to see if this was causing an issue, but it didn't seem to be. I expected this as I didn't add a max_length to the description field in the post model but wanted to check all options anyway.
-  So I then created a new test blog post, and it worked fine.
+So I then created a new test blog post, and it worked fine.
 
 **Bug** Creating a new blog post with the same title, even if one post was in draft status, threw the following error:
 
@@ -262,16 +269,26 @@ When I first developed the idea for this project, I wanted to feature a class bo
 
   I have the title and slug fields set to unique=False, but when I changed the title and slug and the issue was solved.
 
-**Issue** I had an issue with blog posts incorrectly displaying on the *Student Creations* page rather than just the home page.
+**Bug** I had an issue with blog posts incorrectly displaying on the *Student Creations* page rather than just the home page.
 
 - **Solution** In hindsight I should have created a separate field in the model for filtering. However, in the end I set a filter on the posts queryset in the StudentUpload view to filter by draft status as the posts uploaded by students were considered drafts in the database, compared to the teacher blog posts which had a status of published to be displayed on the home page.
 
-### Current Issues/Bugs
+### Current Issues & Bugs
 
-- When a user comments on a blog post, the comments that are already there disappear. I wasn't able to find a solution to this in time but will look into it in the future.
+**Bug** When a user comments on a blog post, the comments that are already there disappear. I wasn't able to find a solution to this in time but will look into it in the future.
 ![comments-issue-2](media/images/screenshots/comments-2.png)
 
 ![comments-issue-1](media/images/screenshots/comments-1.png)
+
+**Bug** I had removed the description that I initially chose to display on the homepage blog article cards. However, after adding it back in to test out, a similar issue I faced earlier reoccurred. Nothing else was changed, so I'm unsure what caused this. I removed and re added the splice filter, the safe filter but the issue still remained. I decided not to keep it without the description anyway, ending it with a *Read More* CTA button.
+
+![post-description-bug](media/images/screenshots/bug2.png)
+
+**Bug** When a user needs to reset their password, an error is thrown after entering an email address. I created a basic custom error page to display to the user.
+
+![server-error](media/images/screenshots/custom-error.png)
+
+I plan to look further into this as it's an important feature to have.
 
 ## Technologies Used
 
@@ -284,25 +301,26 @@ When I first developed the idea for this project, I wanted to feature a class bo
 ### Languages Used
 
 - HTML was used for the layout of all templates.
-- CSS was used to style the pages and maintaining brand and styling consistent across the site.
+- CSS was used alongside Bootstrap to style the pages and keep branding and styling consistent across the site.
+- Python was used to implement Django functionality.
+- JavaScript - Summernote Library and short piece of code to set a timer on messages displayed.
 
-### Frameworks
+### Frameworks & Libraries
 
 - Django
   - Django was the main framework, and the backbone of this project, where I created the models, views and forms for the site.
 - Bootstrap
   - Bootstrap 5 was used to develop a responsive, mobile friendly site using the predefined classes for a clear and consistent layout.
-
 - Cloudinary
-
-### Libraries
-
+  - Was used as cloud storage for all image uploads on the site.
 - Summernote
   - Summernote was the WYSIWYG editor used to create posts in the Django admin panel for teachers to use.
-
+- Crispy Forms
+  - Used to style forms on the site.
 - Google Fonts
+  - *Alumni Sans* is the main font family used across the site.
 - Font Awesome
-  - Font Awesome was used for the icon that appears when a user is logged in.
+  - Used for the profile icon that appears when a user is logged in as well as the like and comment icons on the post detail page.
 
 ## Testing
 
@@ -333,7 +351,11 @@ As a **Current Site User** I can:
 
 #### Comment on blog posts so that I can interact with the teachers and my fellow students
 
+I tested commenting on blog posts from different test accounts and the comments were sent to the admin panel for approval by admin. Once approved in the admin panel they appear on the post detail page. There is a bug with this feature which I have explained in the *Current Issues & Bugs* section.
+
 #### View the comments made on blog posts by other users so that I can interact with my fellow potters at the studio
+
+Comments made are visible on the blog detail page.
 
 #### View the work of other students so that I can be active in the Social Ceramics community
 
@@ -345,11 +367,11 @@ Images were uploaded with several test accounts to make sure they were displayin
 
 #### Make changes to my shared posts so that I can ensure I share exactly what I want to or edit any spelling mistakes
 
-The caption and image shared were changed by clicking *Edit image* and these changed were displayed. 
+The caption and image shared were changed by clicking *Edit Image* and these changed were displayed.
 
 #### Delete my shared posts so that I can share exactly what I want to
 
-An image was shared and then deleted by clicking the *Delete Image* button.
+An image was shared and then deleted by clicking the *Delete Image* button. the image was no longer visible on the *Student Creations* page.
 
 #### Create a profile so that my experience feels more personal
 
@@ -363,7 +385,7 @@ As a **Prospective Site User** I can:
 
 #### View blog posts from the studio so that I can judge whether I want to be more involved in the studio
 
-The site was accessed, and all correct pages were displayed to users without an account.
+The site was accessed, and all the intended pages were displayed to users without an account.
 
 #### Sign up for an account so that I can share my work and view the work of my fellow students
 
@@ -377,19 +399,33 @@ Once logged in with admin credentials, a new post was created and published. In 
 
 #### Approve comments on posts so that I can filter objectionable comments
 
+After posting a new comment from a test account, the post became visible in the admin panel with the option to approve or delete.
+
 #### Assign staff status to other teachers so that they can create blog posts and manage the Social Ceramics platform
 
 A 'teacher' account was created and assigned admin status. They are able to create, view, edit and delete posts as well as approve or delete comments made.
 
-#### Code Validation
+### Code Validation
 
-W3C Markup Validator
+#### W3C Markup Validator
 
-Jigsaw Validator
+All pages were passed through the W3C Validator. The only issue was on the post detail page, the validator showed there was a stray closing p tag. However after several checks I couldn't find this stray tag in my code and description has a safe filter on it so believe it is caused by the Summernote editor.
 
-PEP8 Python Validator
+![validator-bug](media/images/screenshots/validator-bug.png)
 
-In my edit_profile view. After taking several steps to fix this late issue, the only method that was fixed this problem was a try/except block.
+#### Jigsaw Validator
+
+The code from the one CSS stylesheet was passed through the Jigsaw validator with no errors.
+
+![jigsaw](media/images/screenshots/jigsaw.png)
+
+#### Python Validation
+
+At the time of testing, the PEP8 Online website was down so the pycodestyle Gitpod extension was used instead. The errors shown are from the settings.py file, stating that lines are too long, however there isn't a way to shorten them in this file.
+
+The only other error is in my edit_profile view. After taking several steps to fix a late issue with the page not rendering correctly, the only method that fixed this problem at the time was a try/except block. I thought it was better to have an explained error than to leave out the feature all together. However, I will look into finding a better way around this in future development of this project.
+
+![pep8-error](media/images/screenshots/python-testing.png)
 
 ### Lighthouse Testing
 
@@ -478,16 +514,50 @@ In order to fork the project, the following steps are to be followed:
 
 ### Cloning the Repository
 
+In order to run this project locally, the following steps are to be followed:
+
+1. Install the Gitpod Browser Extension for Chrome.
+2. After installation, restart the browser.
+3. Log into GitHub or create an account.
+4. Locate the GitHub Repository.
+5. Click the green 'Gitpod' button in the top right corner of the repository. This will trigger a new Gitpod workspace to be created from the code in GitHub where you can work locally.
+
+How to run this project within a local IDE, such as VSCode:
+
+1. Log into GitHub or create an account.
+2. Locate the GitHub Repository.
+3. Under the repository name, click "Clone or download".
+4. In the Clone with HTTPs section, copy the clone URL for the repository.
+5. In your local IDE open the terminal.
+6. Change the current working directory to the location where you want the cloned directory to be made.
+7. Type 'git clone', and then paste the URL you copied in Step 3.
+```git clone https://github.com/USERNAME/REPOSITORY```
+8. Press Enter. Your local clone will be created.
+
+Further reading and troubleshooting on cloning a repository from GitHub here
+
 ## Credits
 
 ### Content
 
-Content for the blog posts come from:
+The following sites were used for blog content on the site:
 
 - [The Little Pot Company](https://thelittlepotcompany.co.uk/blogs/pottery/how-to-centre-clay-the-one-sided-method-beginners-guide)
+- [The Crucible](https://www.thecrucible.org/guides/ceramics/handbuilding/)
 
 ### Media
 
 - The Social Ceramics logo was created in [Canva](https://www.canva.com/).
   
-- All other images used across the site were taken from [Unsplash](https://unsplash.com/), and [Pexels](https://www.pexels.com/).
+- All other images used across the site including all user uploads and blog posts were taken from [Unsplash](https://unsplash.com/), and [Pexels](https://www.pexels.com/).
+
+### Code
+
+- Code Institute blog tutorial was used as a helpful basis. Commenting and likes features were used from the tutorial.
+- [Stack Overflow](https://stackoverflow.com/) various articles for general help.
+- [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) documentation.
+- 
+
+### Acknowledgements
+
+Special shoutout to my mentor Richard Wells for his help and guidance during this process! Also, thanks to tutor support who were super helpful with certain issues that frazzled my brain!

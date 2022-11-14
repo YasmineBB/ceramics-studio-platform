@@ -88,7 +88,6 @@ View for users to like user images.
 
 
 class PostLike(View):
-    
     def post(self, request, slug, *args, **kwargs):
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
@@ -166,7 +165,8 @@ View for user to create a profile.
 """
 
 
-class ProfileCreateView(UserPassesTestMixin, LoginRequiredMixin, generic.CreateView):
+class ProfileCreateView(UserPassesTestMixin, LoginRequiredMixin,
+                        generic.CreateView):
     model = UserProfile
     form_class = UserForm
     template_name = 'create_profile.html'

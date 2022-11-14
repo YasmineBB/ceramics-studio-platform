@@ -12,10 +12,6 @@ p {
 }
 
 
-/* small {
-    margin: auto;
-} */
-
 /* Page headings */
 
 .page-heading {
@@ -34,12 +30,6 @@ p {
     padding: 0 10px;
 }
 
-/* .navbar-brand {
-    font-family: 'Alumni Sans', sans-serif;
-    font-size: 40px;
-    /* padding-left: 10px; */
-
-
 .navbar-brand {
     position: relative;
     width: 140px;
@@ -57,27 +47,10 @@ p {
     font-weight: 300;
 }
 
-/* .active {
-    font-weight: bold;
-} */
-
-/* Icons */
-
-/* .fa-brands {
-    color: #8665d0;
-    text-decoration: none;
-} */
-
 .fa-user {
     padding-left: 10px;
     color: green;
 }
-
-/* Jumbotron */
-
-/* .jumbotron {
-    background-image: url('https://images.unsplash.com/photo-1642355778435-8fa5e805ac0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=773&q=80') no repeat;
-} */
 
 /* Authorisation pages styling */
 

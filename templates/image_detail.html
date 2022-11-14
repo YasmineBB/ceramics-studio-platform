@@ -31,33 +31,10 @@
                     <a class="btn btn-sm btn-danger" href="{% url 'delete_image' photo.pk %}">Delete Image</a>
                 </div>
                 {% endif%}
-                <div class="row">
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'image_like' photo.id %}" method="POST">
-                                {% csrf_token %}
-                                {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{photo.id}}" class="btn-like"><i
-                                        class="fa-solid fa-heart"></i></button>
-                                {% else %}
-                                <button type="submit" name="blogpost_id" value="{{photo.id}}" class="btn-like"><i
-                                        class="fa-regular fa-heart"></i></button>
-                                {% endif %}
-                            </form>
-                            {% else %}
-                            <span class="text-secondary"><i class="far fa-heart"></i></span>
-                            {% endif %}
-                            <span class="text-secondary">{{ post.number_of_likes }} </span>
-                        </strong>
-                    </div>
-                </div>
                 {% endif %}
             </div>
         </div>
     </div>
-</div>
-
 </div>
 
 

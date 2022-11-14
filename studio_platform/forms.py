@@ -32,13 +32,6 @@ class CustomSignupForm(SignupForm):
         return user
 
 
-
-# class UploadForm(forms.ModelForm):
-#     class Meta:
-#         model = Post
-#         fields = ('caption', 'image', 'description', 'user',)
-
-
 """
 Form for user to edit profile.
 """

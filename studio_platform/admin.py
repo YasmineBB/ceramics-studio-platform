@@ -7,6 +7,7 @@ from django_summernote.admin import SummernoteModelAdmin
 Class which allows the admin user to create, view and search for posts.
 """
 
+
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
 
@@ -18,7 +19,7 @@ class PostAdmin(SummernoteModelAdmin):
 
 
 """
-Class which allows the admin user to view, search for, filter and approve 
+Class which allows the admin user to view, search for, filter and approve
 comments on posts.
 """
 
@@ -30,12 +31,12 @@ class CommentAdmin(SummernoteModelAdmin):
     list_display = ['name', 'comment_body', 'post', 'posted_on', 'approved']
     list_filter = ['approved', 'posted_on']
     actions = ['approve_comments']
-    
+
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
-        
+
 
 @admin.register(UserProfile)
 class ProfileAdmin(admin.ModelAdmin):
-    search_fields = ['first_name', 'last_name', 'bio',]
-    list_display = ['first_name', 'last_name', 'bio',]
+    search_fields = ['first_name', 'last_name', 'bio', ]
+    list_display = ['first_name', 'last_name', 'bio', ]
