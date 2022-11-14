@@ -5,7 +5,63 @@
 - [Link](https://social-ceramics.herokuapp.com/) to live site.
 
 ## Table of Contents
+<!-- TOC -->
 
+- [Social Ceramics](#social-ceramics)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Planning and Development](#planning-and-development)
+    - [User Experience](#user-experience)
+      - [User Stories](#user-stories)
+        - [Site User](#site-user)
+        - [Site Admin](#site-admin)
+      - [Strategy](#strategy)
+      - [Scope](#scope)
+      - [Structure](#structure)
+        - [Site User Map](#site-user-map)
+        - [Site Admin Map](#site-admin-map)
+      - [Skeleton](#skeleton)
+      - [Surface](#surface)
+        - [Design](#design)
+  - [Agile Development Phase](#agile-development-phase)
+  - [Features](#features)
+    - [Current Features](#current-features)
+      - [Homepage](#homepage)
+        - [Navigation](#navigation)
+        - [User Authentication](#user-authentication)
+      - [Blog Detail Page](#blog-detail-page)
+      - [About Page](#about-page)
+      - [Share Your Work](#share-your-work)
+      - [Student Creations Page](#student-creations-page)
+      - [Student Creations Image Detail](#student-creations-image-detail)
+      - [Profile](#profile)
+    - [Future Features](#future-features)
+      - [Student Profile](#student-profile)
+      - [Classes](#classes)
+  - [Issues and Bugs](#issues-and-bugs)
+    - [Fixed Issues \& Bugs](#fixed-issues--bugs)
+    - [Current Issues \& Bugs](#current-issues--bugs)
+  - [Technologies Used](#technologies-used)
+    - [Languages Used](#languages-used)
+    - [Frameworks \& Libraries](#frameworks--libraries)
+  - [Testing](#testing)
+    - [Manual Testing](#manual-testing)
+    - [Code Validation](#code-validation)
+      - [W3C Markup Validator](#w3c-markup-validator)
+      - [Jigsaw Validator](#jigsaw-validator)
+      - [Python Validation](#python-validation)
+    - [Lighthouse Testing](#lighthouse-testing)
+  - [Deployment](#deployment)
+    - [Deploying to Heroku](#deploying-to-heroku)
+    - [Forking the Repository](#forking-the-repository)
+    - [Cloning the Repository](#cloning-the-repository)
+  - [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Code](#code)
+    - [Acknowledgements](#acknowledgements)
+
+<!-- /TOC -->
 ## Introduction
 
 I developed the idea for *Social Ceramics* after taking a 12-week pottery class which provided me with so much inspiration not only creatively, but gave me the idea for creating a useful platform for a fictional ceramics studio.
@@ -394,71 +450,71 @@ I conducted manual testing on all my user stories and the results are as follows
 
 As a **Current Site User** I can:
 
-#### Log in with my credentials so that I can share my work and view the work of my fellow students
+**Log in with my credentials so that I can share my work and view the work of my fellow students**
 
 Several test accounts were used to log in and worked as they should. The user is taken to the homepage with full access visible in the navigation bar. If incorrect login details are entered, the user receives a message saying the *username and/or password you specified are not correct* and prompted to sign in again.
 
-#### Navigate through the platform easily so that I can interact with my fellow students
+**Navigate through the platform easily so that I can interact with my fellow students**
 
 Links in the navigation bar work correctly and take the user to each intended page. The links work for users who are logged in and out. The option to log out for the logged-in user is always visible and there are CTA buttons on the home page to prompt users.
 
-#### View blog posts from the studio so that I can gain knowledge, tips and skills to improve my practice
+**View blog posts from the studio so that I can gain knowledge, tips and skills to improve my practice**
 
 Accessing the site without an account and also testing the view from several test accounts display the blog posts on the homepage with pagination and the links to each post take the user to the respective pages.
 
-#### Comment on blog posts so that I can interact with the teachers and my fellow students
+**Comment on blog posts so that I can interact with the teachers and my fellow students**
 
 I tested commenting on blog posts from different test accounts and the comments were sent to the admin panel for approval by admin. Once approved in the admin panel they appear on the post detail page. There is a bug with this feature which I have explained in the *Current Issues & Bugs* section.
 
-#### View the comments made on blog posts by other users so that I can interact with my fellow potters at the studio
+**View the comments made on blog posts by other users so that I can interact with my fellow potters at the studio**
 
 Comments made are visible on the blog detail page.
 
-#### View the work of other students so that I can be active in the Social Ceramics community
+**View the work of other students so that I can be active in the Social Ceramics community**
 
 Once logged in, the shared work by other students are visible to the user on the *Student Creations* page. A new post was created as a separate user for testing, which displayed on the page and was visible to on the page from other user accounts.
 
-#### Share my work on the platform so that I can be an active member of the Social Ceramics studio
+**Share my work on the platform so that I can be an active member of the Social Ceramics studio**
 
 Images were uploaded with several test accounts to make sure they were displaying correctly on the *Student Creations* page which they were.
 
-#### Make changes to my shared posts so that I can ensure I share exactly what I want to or edit any spelling mistakes
+**Make changes to my shared posts so that I can ensure I share exactly what I want to or edit any spelling mistakes**
 
 The caption and image shared were changed by clicking *Edit Image* and these changed were displayed.
 
-#### Delete my shared posts so that I can share exactly what I want to
+**Delete my shared posts so that I can share exactly what I want to**
 
 An image was shared and then deleted by clicking the *Delete Image* button. The image was no longer visible on the *Student Creations* page.
 
-#### Create a profile so that my experience feels more personal
+**Create a profile so that my experience feels more personal**
 
 Under the *Profile* dropdown in the navigation bar, if a user has created a profile, the option *View Profile* appears. If the user hasn't created a profile, the option *Create Profile* appears. A new user was created to test it works which it does. Their profile displays and the user can edit their profile from there.
 
-#### Edit my profile so that my experience feels more personal
+**Edit my profile so that my experience feels more personal**
 
 After creating a profile, the *Edit Profile* button was clicked and changed were made. The changes save to the users profile which is displayed after making the changes.
 
 As a **Prospective Site User** I can:
 
-#### View blog posts from the studio so that I can judge whether I want to be more involved in the studio
+**View blog posts from the studio so that I can judge whether I want to be more involved in the studio**
 
 The site was accessed, and all the intended pages were displayed to users without an account.
 
-#### Sign up for an account so that I can share my work and view the work of my fellow students
+**Sign up for an account so that I can share my work and view the work of my fellow students**
 
 Several test accounts were created and users are taken to the homepage once they have created an account. The user is displayed a message that their *username is unique and cannot be changed*. If they create an account with a username that is already in the database, a message is displayed stating that.
 
 As a **Site Admin** I can :
 
-#### Create, read, update and delete posts so that I can manage the Social Ceramics platform
+**Create, read, update and delete posts so that I can manage the Social Ceramics platform**
 
 Once logged in with admin credentials, a new post was created and published. In the admin panel, any changes made to the content were also displayed on the home page after saving. Posts that were deleted from the admin panel are also removed from the home page.
 
-#### Approve comments on posts so that I can filter objectionable comments
+**Approve comments on posts so that I can filter objectionable comments**
 
 After posting a new comment from a test account, the post became visible in the admin panel with the option to approve or delete.
 
-#### Assign staff status to other teachers so that they can create blog posts and manage the Social Ceramics platform
+**Assign staff status to other teachers so that they can create blog posts and manage the Social Ceramics platform**
 
 A 'teacher' account was created and assigned admin status. They are able to create, view, edit and delete posts as well as approve or delete comments made.
 
