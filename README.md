@@ -18,8 +18,6 @@ This project is the fourth of five portfolio projects to complete during my full
 
 I started the initial planning of the site using Notion, where I brainstormed my ideas, user stories and direction for the site including all features I'd like to have, which I then edited down based on viability and to keep on track with an MVP. I used GitHub to create issues for my user stories which I assigned to the dedicated projects board for the project.
 
-I did find it quite challenging to implement everything as planned, but I do believe that with continued practice and development the process will be easier to undertake and stick to. However, I also found it helpful in keeping me focused on the tasks and on track with the overall project.
-
 ### User Experience
 
 #### User Stories
@@ -57,9 +55,9 @@ As a **Prospective Site User** I can:
 
 ##### Site Admin
 
-In this case, the Site Admin are the teachers at the studio. The teachers will be posting blog posts to the site which appear on the homepage and these posts are visible to all users, whether they have created an account on the platform, or whether they are a current student at the studio or a prospective student.
+In this case, the Site Admin are the teachers at the studio. The teachers will be posting blog posts to the site which appear on the homepage and these posts are visible to all users, whether they have created an account on the platform, or whether they are a current student at the studio without an account, or a prospective student.
 
-The idea is that the blog posts will cover interesting topics that a ceramics student, or someone who is interested in getting into ceramics, may find useful. This serves the needs of current ceramic students at the studio as the posts will be practical and applicable to their practice. This should also entice prospective students by drawing awareness to the studio.
+The idea is that the blog posts will cover interesting topics that a ceramics student, or someone who is interested in getting into ceramics, may find useful. This serves the needs of current students at the studio as the posts will be practical and applicable to their practice. This should also entice prospective students by drawing awareness to the studio and the engaging manner it operates in.
 
 - As a **Site Admin** I can:
 
@@ -83,7 +81,7 @@ Social Ceramics aims to build this community by:
 - Providing useful information that students can make use of alongside their practice, in the form of blog posts by the studio teachers.
 - Providing students with a platform to share their work and view the work of their fellow students at the studio.
 
-I created the following strategy table to determine the trade-off of importance versus viability:
+I created the following strategy table to determine the trade-off of importance versus viability of my user stories:
 
 | Feature      | Importance | Viability |
 | -------- | -----------| ------------------|
@@ -172,6 +170,8 @@ Projects Board In Done:
 
 ![done](media/images/screenshots/project-done.png)
 
+I did find it quite challenging to implement everything as planned, but I do believe that with continued practice and development and the strengthening of my coding ability going forward, the process will be easier to undertake and stick to. I did though find it helpful in keeping me focused on the tasks and on track with the overall project.
+
 ## Features
 
 ### Current Features
@@ -205,10 +205,12 @@ The navigation changes in the instance that they are logged in as the *Student C
 Using Djangos built in authentication system, django-allauth, the user is able to register on the site, log-in and log-out.
 
 If the user is authenticated the features they see differ slightly. For example on the homepage, if the user is logged in, they are prompted to share their work.
+
 ![Home-logged-in](media/images/screenshots/home-logged-in.png)
 
 If they are not logged in, they are prompted to Sign In.
-![Home-not-logged-in](media/images/screenshots/home-not-logged-in.png)
+
+![Home-not-logged-in](media/images/screenshots/home-sign-in.png)
 
 Ideally, I would like to implement an authorisation system so that only students who are involved with the studio, either using the studio space or taking classes, can register for an account. For example, they sign up with credentials which would include selecting the class they are taking, with this information being checked against a database.
 
@@ -256,18 +258,28 @@ This page acts as a feed to display all of the student posts. It is paginated to
 
 ![student-creations](https://media.giphy.com/media/KKCn6jnUpkZH8vT4Nd/giphy.gif)
 
-The user can click the *view post* button to see the post. If the user is the author of the post, the are provided with the option to make changes to or delete their post. This is not visible to other users so that only the author has access to make any changes.
+The user can click the *View Post* button to see the post. If the user is the author of the post, the are provided with the option to make changes to or delete their post. This is not visible to other users so that only the author has access to make any changes.
 
 #### Student Creations Image Detail
 
 Once clicked on the *Read More* button, the user is taken to a page that displays the image.
+
 ![image-detail](media/images/screenshots/image-detail.png)
+
+If the image is one posted by the logged-in user, they have the ability to edit and delete their post.
+
+![edit-view](media/images/screenshots/edit-delete-buttons.png)
+
+They can make changes to the image or the caption or exit without saving.
+
+![edit-view2](media/images/screenshots/edit-delete-view.png)
 
 #### Profile
 
 When a user has created an account, in the navigation bar under the *Profile* dropdown, they are provided with the option to *Create Profile*.
 
 ![create-profile-nav](media/images/screenshots/create-profile-nav.png)
+
 
 Once they have created a profile, this option changes to *View Profile*.
 
@@ -288,7 +300,7 @@ The user can also edit their profile, for example changing their profile picture
 
 #### Student Profile
 
-I would like to implement the ability for users to view each others profile and wanted to do so in this project but didn't have enough time. I also wanted to provide the user with the ability to delete their profile but haven't yet for the same reason. However, these are things I plan to implement going forward.
+I would like to implement the ability for users to view each others profile and wanted to do so in this project but couldn't due to time constraints. I also wanted to provide the user with the ability to delete their profile but haven't yet for the same reason. However, these are things I plan to implement going forward.
 
 #### Classes
 
@@ -300,9 +312,11 @@ When I first developed the idea for this project, I wanted to feature a class bo
 
 **Bug** When a user signed up with an email address, an OSError was thrown.
 
-- **Solution** - I added ```ACCOUNT_EMAIL_VERIFICATION = "none"``` in settings.py
+- **Solution** - I added
+  - ```ACCOUNT_EMAIL_VERIFICATION = "none"``` in settings.py
 
 **Bug** I had a problem creating one particular blog post from the admin panel which, when published, it through off the layout.
+
 ![Bug](media/images/screenshots/bug.png)
 
 - **Solution** I changed the status of this post to draft, and it went back to normal. I then tested the length of the description, so I edited it down to see if this was causing an issue, but it didn't seem to be. I expected this as I didn't add a max_length to the description field in the post model but wanted to check all options anyway.
@@ -318,22 +332,23 @@ So I then created a new test blog post, and it worked fine.
 
 - **Solution** In hindsight I should have created a separate field in the model for filtering. However, in the end I set a filter on the posts queryset in the StudentUpload view to filter by draft status as the posts uploaded by students were considered drafts in the database, compared to the teacher blog posts which had a status of published to be displayed on the home page.
 
-**Bug** I had an issue with Summernote when I copy and pasted content into the editor. The format was thrown off and it wasn't responsive on the site.
+**Bug** I had an issue with Summernote when I copied and pasted content into the editor. The format was thrown off, and it wasn't responsive on the site.
 
 - **Solution** By selecting the Helvetica Neue font and justifying the content, it seemed to work fine. When typing directly into the editor the font inherits the Alumni Sans font from the stylesheet. At the moment this wasn't a big issue and in theory the teachers will be writing their own content for the site but it's something I'll look into further going forward.
 
 ### Current Issues & Bugs
 
 **Bug** When a user comments on a blog post, the comments that are already there disappear. I wasn't able to find a solution to this in time but will look into it in the future.
+
 ![comments-issue-2](media/images/screenshots/comments-2.png)
 
 ![comments-issue-1](media/images/screenshots/comments-1.png)
 
-**Bug** I had removed the description that I initially chose to display on the homepage blog article cards. However, after adding it back in to test out, a similar issue I faced earlier reoccurred. Nothing else was changed, so I'm unsure what caused this. I removed and re added the splice filter, the safe filter but the issue still remained. I decided not to keep it without the description anyway, ending it with a *Read More* CTA button.
+**Bug** I had removed the description that I initially chose to display on the homepage blog article cards. However, after adding it back in to test out, a similar issue I faced earlier reoccurred with the layout being thrown off. Nothing else was changed, so I'm unsure what caused this. I removed and re added the splice filter, the safe filter but the issue still remained. I decided to keep it without the description anyway, ending it with a *Read More* CTA button.
 
 ![post-description-bug](media/images/screenshots/bug2.png)
 
-**Bug** When a user needs to reset their password, an error is thrown after entering an email address. I created a basic custom error page to display to the user.
+**Bug** When a user needs to reset their password, an error is thrown after entering an email address. I created a basic custom error page to display to the user as couldn't fix this in time.
 
 ![server-error](media/images/screenshots/custom-error.png)
 
@@ -413,7 +428,7 @@ The caption and image shared were changed by clicking *Edit Image* and these cha
 
 #### Delete my shared posts so that I can share exactly what I want to
 
-An image was shared and then deleted by clicking the *Delete Image* button. the image was no longer visible on the *Student Creations* page.
+An image was shared and then deleted by clicking the *Delete Image* button. The image was no longer visible on the *Student Creations* page.
 
 #### Create a profile so that my experience feels more personal
 
@@ -437,7 +452,7 @@ As a **Site Admin** I can :
 
 #### Create, read, update and delete posts so that I can manage the Social Ceramics platform
 
-Once logged in with admin credentials, a new post was created and published. In the admin panel, changes to the content were made
+Once logged in with admin credentials, a new post was created and published. In the admin panel, any changes made to the content were also displayed on the home page after saving. Posts that were deleted from the admin panel are also removed from the home page.
 
 #### Approve comments on posts so that I can filter objectionable comments
 
@@ -600,11 +615,11 @@ The following sites were used for blog content on the site:
 
 ### Code
 
-- Code Institute blog tutorial was used as a helpful basis. Commenting and likes features were used from the tutorial.
+- The Code Institute Django blog tutorial was used as a helpful basis. Commenting and likes features were used from the tutorial.
 - [Stack Overflow](https://stackoverflow.com/) various articles for general help.
 - [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) documentation.
 - [YouTube](https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi) was also a helpful source and the Codemy Django playlist was especially so.
 
 ### Acknowledgements
 
-Special shoutout to my mentor Richard Wells for his help and guidance during this process! Also, thanks to tutor support who were super helpful with certain issues that frazzled my brain!
+Special shoutout to my amazing mentor Richard Wells for his help and guidance during this process! Also, thanks to tutor support who were super helpful with certain issues that frazzled my brain!
